@@ -1,3 +1,2 @@
-# Lottery
-
-抽奖系统
+# Lottery 
+Lottery Microservice System
