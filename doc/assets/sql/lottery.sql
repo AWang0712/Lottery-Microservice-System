@@ -34,7 +34,7 @@ create table award
     awardName    varchar(64)                        null comment 'award name',
     awardContent varchar(128)                       null comment 'award content',
     createTime   datetime default CURRENT_TIMESTAMP null comment 'create time',
-    updateTime   datetime default CURRENT_TIMESTAMP null comment 'update time',
+    updateTime   datetime default CURRENT_TIMESTAMP null comment 'update time'
 )
     comment 'award config';
 
@@ -66,6 +66,6 @@ create table strategy_detail
     awardCount int           null comment 'award count',
     awardRate  decimal(5, 2) null comment 'award rate',
     createTime datetime      null comment 'create time',
-    updateTime datetime      null comment 'update time',
+    updateTime datetime      null comment 'update time'
 )
     comment 'strategy detail';
