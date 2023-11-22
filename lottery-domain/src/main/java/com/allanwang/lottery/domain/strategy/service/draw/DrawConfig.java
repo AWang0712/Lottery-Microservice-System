@@ -1,7 +1,8 @@
 package com.allanwang.lottery.domain.strategy.service.draw;
 
+import com.allanwang.lottery.common.Constants;
 import com.allanwang.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
-import org.springframework.context.annotation.Bean;
+
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -9,16 +10,18 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 public class DrawConfig {
     @Resource
-    private IDrawAlgorithm defaultRateRandomDrawAlgorithm;
+    private IDrawAlgorithm entiretyRateRandomDrawAlgorithm;
 
     @Resource
     private IDrawAlgorithm singleRateRandomDrawAlgorithm;
 
-    protected static Map<Integer, IDrawAlgorithm> drawAlgorithmMap = new ConcurrentHashMap<>();
+    /** lottery strategy group*/
+    protected static Map<Integer, IDrawAlgorithm> drawAlgorithmGroup = new ConcurrentHashMap<>();
+
 
     @PostConstruct
     public void init() {
-        drawAlgorithmMap.put(1, defaultRateRandomDrawAlgorithm);
-        drawAlgorithmMap.put(2, singleRateRandomDrawAlgorithm);
+        drawAlgorithmGroup.put(Constants.StrategyMode.ENTIRETY.getCode(), entiretyRateRandomDrawAlgorithm);
+        drawAlgorithmGroup.put(Constants.StrategyMode.SINGLE.getCode(), singleRateRandomDrawAlgorithm);
     }
 }

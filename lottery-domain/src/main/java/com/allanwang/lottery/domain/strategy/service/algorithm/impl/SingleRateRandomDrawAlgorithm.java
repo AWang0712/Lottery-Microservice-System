@@ -3,7 +3,6 @@ package com.allanwang.lottery.domain.strategy.service.algorithm.impl;
 import com.allanwang.lottery.domain.strategy.service.algorithm.BaseAlgorithm;
 import org.springframework.stereotype.Component;
 
-import java.security.SecureRandom;
 import java.util.List;
 
 /*
@@ -21,12 +20,16 @@ public class SingleRateRandomDrawAlgorithm extends BaseAlgorithm {
         assert rateTuple != null;
 
         // random index
-        int randomVal = new SecureRandom().nextInt(100) + 1;// [1, 100]
+        int randomVal = this.generateSecureRandomIntCode(100);
         int idx = super.hashIdx(randomVal);
 
         // return the awardId
         String awardId = rateTuple[idx];
-        if (excludeAwardIds.contains(awardId)) return "better luck next time";
+        // if the awardId has been eliminated, return null
+        if (excludeAwardIds.contains(awardId)) {
+            return null;
+        }
+
 
         return awardId;
     }

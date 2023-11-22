@@ -36,7 +36,10 @@ public class SpringRunnerTest {
 
     @Test
     public void test_drawExec() {
-        drawExec.doDrawExec(new DrawReq("Alice", 10001L));//null pointer exception
+        // null pointer exception;
+        // solution: lottery-domain/.../service/draw/AbstractDrawBase.java
+        // line 76
+        drawExec.doDrawExec(new DrawReq("Alice", 10001L));
         drawExec.doDrawExec(new DrawReq("Blake", 10001L));
         drawExec.doDrawExec(new DrawReq("Carol", 10001L));
         drawExec.doDrawExec(new DrawReq("Doris", 10001L));

@@ -1,13 +1,25 @@
 package com.allanwang.lottery.infrastructure.po;
 import java.math.BigDecimal;
 public class StrategyDetail {
+
+    /**
+     * auto_increment
+     */
     private String id;
 
     private Long strategyId;
 
     private String awardId;
 
-    private String awardCount;
+    /**
+     * award count
+     */
+    private Integer awardCount;
+
+    /**
+     * award surplus count in stock
+     */
+    private Integer awardSurplusCount;
 
     private BigDecimal awardRate;
 
@@ -39,12 +51,20 @@ public class StrategyDetail {
         this.awardId = awardId;
     }
 
-    public String getAwardCount() {
+    public Integer getAwardCount() {
         return awardCount;
     }
 
-    public void setAwardCount(String awardCount) {
+    public void setAwardCount(Integer awardCount) {
         this.awardCount = awardCount;
+    }
+
+    public Integer getAwardSurplusCount() {
+        return awardSurplusCount;
+    }
+
+    public void setAwardSurplusCount(Integer awardSurplusCount) {
+        this.awardSurplusCount = awardSurplusCount;
     }
 
     public BigDecimal getAwardRate() {

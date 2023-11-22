@@ -27,7 +27,7 @@ CREATE TABLE `activity` (
   `activityName` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT 'activity name',
   `activityDesc` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'activity desc',
   `beginDateTime` datetime NOT NULL COMMENT 'start time',
-  `endDateTime` datetime NOT NULL COMMENT 'end time
+  `endDateTime` datetime NOT NULL COMMENT 'end time',
   `stockCount` int(11) NOT NULL COMMENT 'stock count',
   `takeCount` int(11) DEFAULT NULL COMMENT 'take count',
   `state` int(11) DEFAULT NULL COMMENT 'Activity status: edited, tabled, withdrawn, passed, running, rejected, closed, open',
@@ -113,7 +113,7 @@ CREATE TABLE `strategy_detail` (
   `createTime` datetime DEFAULT NULL COMMENT 'create time',
   `updateTime` datetime DEFAULT NULL COMMENT 'update time',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='策略明细';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy detail config';
 
 -- ----------------------------
 -- Records of strategy_detail

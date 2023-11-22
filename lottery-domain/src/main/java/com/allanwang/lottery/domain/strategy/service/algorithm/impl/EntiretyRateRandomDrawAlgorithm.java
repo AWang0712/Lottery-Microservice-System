@@ -5,12 +5,12 @@ import com.allanwang.lottery.domain.strategy.service.algorithm.BaseAlgorithm;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.security.SecureRandom;
+
 import java.util.ArrayList;
 import java.util.List;
 
-@Component("defaultRateRandomDrawAlgorithm")
-public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
+@Component("entiretyRateRandomDrawAlgorithm")
+public class EntiretyRateRandomDrawAlgorithm extends BaseAlgorithm {
 
     @Override
     public String randomDraw(Long strategyId, List<String> excludeAwardIds) {
@@ -30,15 +30,22 @@ public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
         }
 
         // pre-determination
-        if (differenceAwardRateList.size() == 0) return "";
-        if (differenceAwardRateList.size() == 1) return differenceAwardRateList.get(0).getAwardId();
+        // award list is empty, return null
+        if (differenceAwardRateList.size() == 0) {
+            return null;
+        }
+
+        // award list only one, return the awardId
+        if (differenceAwardRateList.size() == 1) {
+            return differenceAwardRateList.get(0).getAwardId();
+        }
+
 
         // get the random value
-        SecureRandom secureRandom = new SecureRandom();
-        int randomVal = secureRandom.nextInt(100) + 1;
+        int randomVal = this.generateSecureRandomIntCode(100);
 
         // get the awardId in a loop
-        String awardId = "";
+        String awardId = null;
         int cursorVal = 0;
         for (AwardRateInfo awardRateInfo : differenceAwardRateList) {
             int rateVal = awardRateInfo.getAwardRate().divide(differenceDenominator, 2, BigDecimal.ROUND_UP).multiply(new BigDecimal(100)).intValue();
