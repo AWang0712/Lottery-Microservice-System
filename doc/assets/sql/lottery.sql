@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50639
  Source Host           : localhost:3306
- Source Schema         : lottery_subtractionStock
+ Source Schema         : lottery
 
  Target Server Type    : MySQL
  Target Server Version : 50639
  File Encoding         : 65001
 
- Date: 25/09/2022 08:15:52
+ Date: 27/09/2022 13:25:24
 */
 
 SET NAMES utf8mb4;
@@ -22,28 +22,27 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `activity`;
 CREATE TABLE `activity` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'auto increment id',
-  `activityId` bigint(20) DEFAULT NULL COMMENT 'activity id',
-  `activityName` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT 'activity name',
-  `activityDesc` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'activity desc',
-  `beginDateTime` datetime NOT NULL COMMENT 'start time',
-  `endDateTime` datetime NOT NULL COMMENT 'end time',
-  `stockCount` int(11) NOT NULL COMMENT 'stock count',
-  `takeCount` int(11) DEFAULT NULL COMMENT 'take count',
-  `state` int(11) DEFAULT NULL COMMENT 'Activity status: edited, tabled, withdrawn, passed, running, rejected, closed, open',
-  `creator` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT 'creator',
-  `createTime` datetime NOT NULL COMMENT 'create time',
-  `updateTime` datetime NOT NULL COMMENT 'update time',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'auto_increment',
+  `activity_id` bigint(20) NOT NULL COMMENT 'activity_id',
+  `activity_name` varchar(64) CHARACTER SET latin1 DEFAULT NULL COMMENT 'activity_name',
+  `activity_desc` varchar(128) CHARACTER SET latin1 DEFAULT NULL COMMENT 'activity_desc',
+  `begin_date_time` datetime DEFAULT NULL COMMENT 'begin_date_time',
+  `end_date_time` datetime DEFAULT NULL COMMENT 'end_date_time',
+  `stock_count` int(11) DEFAULT NULL COMMENT 'stock_count',
+  `take_count` int(11) DEFAULT NULL COMMENT 'take_count per person',
+  `state` tinyint(2) DEFAULT NULL COMMENT 'activity state：edit, arraign, withdraw, pass, run, reject, close, open',
+  `creator` varchar(64) CHARACTER SET latin1 DEFAULT NULL COMMENT 'creator',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create_time',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update_time',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `activity_id_uindex` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='activity table';
+  UNIQUE KEY `unique_activity_id` (`activity_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='activity config';
 
 -- ----------------------------
 -- Records of activity
 -- ----------------------------
 BEGIN;
-INSERT INTO `activity` VALUES (1, 100001, 'activity name 1', 'test activity', '2022-12-26 00:00:00', '2023-12-26 23:59:59', 100, 10, 5, 'allan', '2022-08-08 20:14:50', '2022-09-09 20:14:50');
-INSERT INTO `activity` VALUES (2, 100002, 'activity name 2', 'test activity', '2022-12-26 00:00:00', '2023-12-26 23:59:59', 100, 10, 5, 'allan', '2022-10-10 15:49:21', '2022-11-11 15:49:21');
+INSERT INTO `activity` VALUES (1, 100001, '????', '?????????', '2023-08-08 08:14:50', '2023-09-08 20:14:50', 100, 10, 0, 'allan', '2023-08-08 08:14:50', '2023-08-08 08:14:50');
 COMMIT;
 
 -- ----------------------------
@@ -51,26 +50,25 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `award`;
 CREATE TABLE `award` (
-  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'auto increment id',
-  `awardId` bigint(20) DEFAULT NULL COMMENT 'award id',
-  `awardType` int(4) DEFAULT NULL COMMENT 'Types of prizes (text descriptions, redemption codes, coupons, physical prizes not available at this time)',
-  `awardCount` int(11) DEFAULT NULL COMMENT 'award count',
-  `awardName` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award name',
-  `awardContent` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award content',
-  `createTime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'createTime',
-  `updateTime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'updateTime',
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'auto_increment',
+  `award_id` varchar(64) CHARACTER SET latin1 DEFAULT NULL COMMENT 'award_id',
+  `award_type` tinyint(4) DEFAULT NULL COMMENT 'award_type(1. description, 2:redeem code, 3:coupon, 4:physical award)',
+  `award_name` varchar(64) CHARACTER SET latin1 DEFAULT NULL COMMENT 'award_name
+  `award_content` varchar(128) CHARACTER SET latin1 DEFAULT NULL COMMENT 'award_content',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create_time',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update_time
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='award config';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='award config
 
 -- ----------------------------
 -- Records of award
 -- ----------------------------
 BEGIN;
-INSERT INTO `award` VALUES (1, 1, 1, 100, 'IMac', 'Code', '2022-08-15 15:38:05', '2022-08-15 15:38:05');
-INSERT INTO `award` VALUES (2, 2, 1, 100, 'iphone', 'Code', '2022-08-15 15:38:05', '2022-08-15 15:38:05');
-INSERT INTO `award` VALUES (3, 3, 1, 100, 'ipad', 'Code', '2022-08-15 15:38:05', '2022-08-15 15:38:05');
-INSERT INTO `award` VALUES (4, 4, 1, 100, 'AirPods', 'Code', '2022-08-15 15:38:05', '2022-08-15 15:38:05');
-INSERT INTO `award` VALUES (5, 5, 1, 100, 'Book', 'Code', '2022-08-15 15:38:05', '2022-08-15 15:38:05');
+INSERT INTO `award` VALUES (1, '1', 1, 'iMac', 'Code', '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `award` VALUES (2, '2', 1, 'iPhone', 'Code', '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `award` VALUES (3, '3', 1, 'iPad', 'Code', '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `award` VALUES (4, '4', 1, 'AirPods', 'Code', '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `award` VALUES (5, '5', 1, 'Book', 'Code', '2023-08-15 15:38:05', '2023-08-15 15:38:05');
 COMMIT;
 
 -- ----------------------------
@@ -78,24 +76,24 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `strategy`;
 CREATE TABLE `strategy` (
-  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'auto increment id',
-  `strategyId` bigint(11) NOT NULL COMMENT 'strategy id',
-  `strategyDesc` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'strategy desc',
-  `strategyMode` int(4) DEFAULT NULL COMMENT 'strategy mode: 1:single, 2:entire',
-  `grantType` int(4) DEFAULT NULL COMMENT 'grant type',
-  `grantDate` datetime DEFAULT NULL COMMENT 'grant date',
-  `extInfo` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'ext info',
-  `createTime` datetime DEFAULT NULL COMMENT 'create time',
-  `updateTime` datetime DEFAULT NULL COMMENT 'update time',
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'auto_increment',
+  `strategy_id` bigint(11) NOT NULL COMMENT 'strategy_id',
+  `strategy_desc` varchar(128) CHARACTER SET latin1 DEFAULT NULL COMMENT 'strategy_desc',
+  `strategy_mode` tinyint(2) DEFAULT NULL COMMENT 'lottery mode(1:single, 2:entirety)',
+  `grant_type` tinyint(2) DEFAULT NULL COMMENT 'grant_type(1:immediately, 2:delay, 3...)',
+  `grant_date` datetime DEFAULT NULL COMMENT 'grant_date',
+  `ext_info` varchar(128) CHARACTER SET latin1 DEFAULT NULL COMMENT 'ext_info',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'create_time',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update_time',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `strategy_strategyId_uindex` (`strategyId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy config';
+  UNIQUE KEY `strategy_strategyId_uindex` (`strategy_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy config
 
 -- ----------------------------
 -- Records of strategy
 -- ----------------------------
 BEGIN;
-INSERT INTO `strategy` VALUES (1, 10001, 'test', 2, 1, NULL, '', '2022-09-25 08:15:52', '2022-09-25 08:15:52');
+INSERT INTO `strategy` VALUES (1, 10001, '??????', 1, 1, NULL, '', '2023-09-04 15:34:52', '2023-09-04 15:34:52');
 COMMIT;
 
 -- ----------------------------
@@ -103,27 +101,27 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `strategy_detail`;
 CREATE TABLE `strategy_detail` (
-  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'auto increment id',
-  `strategyId` bigint(11) NOT NULL COMMENT 'strategy id',
-  `awardId` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award id',
-  `awardDesc` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award desc',
-  `awardCount` int(11) DEFAULT NULL COMMENT 'award count',
-  `awardSurplusCount` int(11) DEFAULT '0' COMMENT 'award surplus count',
-  `awardRate` decimal(5,2) DEFAULT NULL COMMENT 'award rate',
-  `createTime` datetime DEFAULT NULL COMMENT 'create time',
-  `updateTime` datetime DEFAULT NULL COMMENT 'update time',
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'auto_increment',
+  `strategy_id` bigint(11) NOT NULL COMMENT 'strategy_id',
+  `award_id` varchar(64) CHARACTER SET latin1 DEFAULT NULL COMMENT 'award_id',
+  `award_name` varchar(128) CHARACTER SET latin1 DEFAULT NULL COMMENT 'award_name',
+  `award_count` int(11) DEFAULT NULL COMMENT 'award_count',
+  `award_surplus_count` int(11) DEFAULT '0' COMMENT 'award_surplus_count',
+  `award_rate` decimal(5,2) DEFAULT NULL COMMENT 'probability',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create_time',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update_time',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy detail config';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy_detail';
 
 -- ----------------------------
 -- Records of strategy_detail
 -- ----------------------------
 BEGIN;
-INSERT INTO `strategy_detail` VALUES (1, 10001, '1', NULL, 10, 0, 0.05, '2022-08-15 15:38:05', '2022-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (2, 10001, '2', NULL, 20, 19, 0.15, '2022-08-15 15:38:05', '2022-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (3, 10001, '3', NULL, 50, 43, 0.20, '2022-08-15 15:38:05', '2022-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (4, 10001, '4', NULL, 100, 70, 0.25, '2022-08-15 15:38:05', '2022-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (5, 10001, '5', NULL, 500, 388, 0.35, '2022-08-15 15:38:05', '2022-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (1, 10001, '1', 'iMac', 10, 0, 0.05, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (2, 10001, '2', 'iPhone', 20, 20, 0.15, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (3, 10001, '3', 'ipad', 50, 50, 0.20, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (4, 10001, '4', 'AirPods', 100, 81, 0.25, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (5, 10001, '5', 'Book', 500, 391, 0.35, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
