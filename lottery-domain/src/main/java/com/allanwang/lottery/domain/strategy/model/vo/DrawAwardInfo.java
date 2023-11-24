@@ -1,24 +1,54 @@
 package com.allanwang.lottery.domain.strategy.model.vo;
 
+/**
+ * @description: award info for draw result
+ */
 public class DrawAwardInfo {
-    private String rewardId;
 
+    /**
+     * award id
+     */
+    private String awardId;
+
+    /**
+     * award type
+     */
+    private Integer awardType;
+
+    /**
+     * award name
+     */
     private String awardName;
+
+    /**
+     * award content
+     */
+    private String awardContent;
 
     public DrawAwardInfo() {
     }
 
-    public DrawAwardInfo(String rewardId, String awardName) {
-        this.rewardId = rewardId;
+    public DrawAwardInfo(String awardId, Integer awardType, String awardName,String awardContent) {
+        this.awardId = awardId;
+        this.awardType = awardType;
         this.awardName = awardName;
+        this.awardContent = awardContent;
     }
 
-    public String getRewardId() {
-        return rewardId;
+    public String getAwardId() {
+        return awardId;
     }
 
-    public void setRewardId(String rewardId) {
-        this.rewardId = rewardId;
+    public void setAwardId(String awardId) {
+        this.awardId = awardId;
+    }
+
+    public Integer getAwardType() {
+        return awardType;
+    }
+
+    public void setAwardType(Integer awardType) {
+        this.awardType = awardType;
     }
 
     public String getAwardName() {
@@ -27,5 +57,13 @@ public class DrawAwardInfo {
 
     public void setAwardName(String awardName) {
         this.awardName = awardName;
+    }
+
+    public String getAwardContent() {
+        return awardContent;
+    }
+
+    public void setAwardContent(String awardContent) {
+        this.awardContent = awardContent;
     }
 }

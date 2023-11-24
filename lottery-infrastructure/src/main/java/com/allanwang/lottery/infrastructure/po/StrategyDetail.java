@@ -12,6 +12,12 @@ public class StrategyDetail {
     private String awardId;
 
     /**
+     * award name
+     */
+    private String awardName;
+
+
+    /**
      * award count
      */
     private Integer awardCount;
@@ -50,6 +56,15 @@ public class StrategyDetail {
     public void setAwardId(String awardId) {
         this.awardId = awardId;
     }
+
+    public String getAwardName() {
+        return awardName;
+    }
+
+    public void setAwardName(String awardName) {
+        this.awardName = awardName;
+    }
+
 
     public Integer getAwardCount() {
         return awardCount;

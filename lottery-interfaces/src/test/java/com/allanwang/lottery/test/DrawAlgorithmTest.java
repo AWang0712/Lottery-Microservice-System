@@ -17,7 +17,8 @@ import java.util.List;
 public class DrawAlgorithmTest {
 
     //    @Resource(name = "defaultRateRandomDrawAlgorithm")
-    @Resource(name = "singleRateRandomDrawAlgorithm")
+    //@Resource(name = "singleRateRandomDrawAlgorithm")
+    @Resource(name = "entiretyRateRandomDrawAlgorithm")
     private IDrawAlgorithm randomDrawAlgorithm;
 
     @Before

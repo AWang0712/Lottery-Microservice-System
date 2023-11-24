@@ -20,7 +20,7 @@ public class DrawExecImpl extends AbstractDrawBase {
     @Override
     protected List<String> queryExcludeAwardIds(Long strategyId) {
         List<String> awardList = strategyRepository.queryNoStockStrategyAwardList(strategyId);
-        logger.info("execute lottery strategy: strategyId：{}，excluded awardList：{}", strategyId, JSON.toJSONString(awardList));
+        logger.info("execute lottery strategy: strategyId：{}, excluded awardList：{}", strategyId, JSON.toJSONString(awardList));
         return awardList;
     }
 

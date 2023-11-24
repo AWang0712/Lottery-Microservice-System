@@ -53,12 +53,12 @@ CREATE TABLE `award` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'auto_increment',
   `award_id` varchar(64) CHARACTER SET latin1 DEFAULT NULL COMMENT 'award_id',
   `award_type` tinyint(4) DEFAULT NULL COMMENT 'award_type(1. description, 2:redeem code, 3:coupon, 4:physical award)',
-  `award_name` varchar(64) CHARACTER SET latin1 DEFAULT NULL COMMENT 'award_name
-  `award_content` varchar(128) CHARACTER SET latin1 DEFAULT NULL COMMENT 'award_content',
+  `award_name` varchar(64) CHARACTER SET latin1 DEFAULT NULL COMMENT 'award_name',
+  `award_content` varchar(128) CHARACTER SET latin1 DEFAULT NULL COMMENT 'award_content (text, key, code)',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create_time',
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update_time
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update_time',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='award config
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='award config';
 
 -- ----------------------------
 -- Records of award
@@ -87,7 +87,7 @@ CREATE TABLE `strategy` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update_time',
   PRIMARY KEY (`id`),
   UNIQUE KEY `strategy_strategyId_uindex` (`strategy_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy config
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy config';
 
 -- ----------------------------
 -- Records of strategy

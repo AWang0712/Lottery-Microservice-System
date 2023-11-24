@@ -114,4 +114,97 @@ public class Constants {
         }
     }
 
+    /**
+     * Award Status: 0 Waiting for Award, 1 Award Success, 2 Award Failure
+     *
+     */
+    public enum AwardState {
+
+        /**
+         * Waiting for Award
+         */
+        WAIT(0, "Waiting for Award"),
+
+        /**
+         * Award Success
+         */
+        SUCCESS(1, "Award Success"),
+
+        /**
+         * Award Failure
+         */
+        FAILURE(2, "Award Failure");
+
+        private Integer code;
+        private String info;
+
+        AwardState(Integer code, String info) {
+            this.code = code;
+            this.info = info;
+        }
+
+        public Integer getCode() {
+            return code;
+        }
+
+        public void setCode(Integer code) {
+            this.code = code;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+    }
+
+    /**
+     *
+     * Award Type (1: Text Description, 2: Redemption Code, 3: Coupon, 4: Physical Prize)
+     */
+    public enum AwardType {
+        /**
+         * Text Description
+         */
+        DESC(1, "Text Description"),
+        /**
+         * Redemption Code
+         */
+        RedeemCodeGoods(2, "Redeem Code"),
+        /**
+         * Coupon
+         */
+        CouponGoods(3, "Coupon"),
+        /**
+         * Physical Prize
+         */
+        PhysicalGoods(4, "Physical Prize");
+
+        private Integer code;
+        private String info;
+
+        AwardType(Integer code, String info) {
+            this.code = code;
+            this.info = info;
+        }
+
+        public Integer getCode() {
+            return code;
+        }
+
+        public void setCode(Integer code) {
+            this.code = code;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+    }
+
 }

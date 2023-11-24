@@ -109,13 +109,13 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
      */
     private DrawResult buildDrawResult(String uId, Long strategyId, String awardId) {
         if (null == awardId) {
-            logger.info("strategy lottery completed[not won]，user：{} strategy ID：{}", uId, strategyId);
+            logger.info("strategy lottery completed[not won], user：{} strategy ID：{}", uId, strategyId);
             return new DrawResult(uId, strategyId, Constants.DrawState.FAIL.getCode());
         }
 
         Award award = super.queryAwardInfoByAwardId(awardId);
-        DrawAwardInfo drawAwardInfo = new DrawAwardInfo(award.getAwardId(), award.getAwardName());
-        logger.info("strategy lottery completed[won]，user：{} strategy ID：{} award ID：{} award name：{}", uId, strategyId, awardId, award.getAwardName());
+        DrawAwardInfo drawAwardInfo = new DrawAwardInfo(award.getAwardId(), award.getAwardType(), award.getAwardName(), award.getAwardContent());
+        logger.info("strategy lottery completed[won], user：{} strategy ID：{} award ID：{} award name：{}", uId, strategyId, awardId, award.getAwardName());
 
         return new DrawResult(uId, strategyId, Constants.DrawState.SUCCESS.getCode(), drawAwardInfo);
     }
