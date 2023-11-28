@@ -28,6 +28,53 @@ public class Constants {
     }
 
     /**
+     * activity state：1 Edit, 2 Submit for review, 3 Withdraw for review, 4 Pass, 5 Run (status of worker scan after review passes), 6 Reject, 7 Close, 8 Open
+     */
+    public enum ActivityState {
+
+        /** 1：edit */
+        EDIT(1, "edit"),
+        /** 2：arraignment */
+        ARRAIGNMENT(2, "arraignment"),
+        /** 3： withdraw for arraignment*/
+        REVOKE(3, "withdraw for arraignment"),
+        /** 4：pass */
+        PASS(4, "pass"),
+        /** 5：run(in activity) */
+        DOING(5, "run(in activity"),
+        /** 6：reject */
+        REFUSE(6, "reject"),
+        /** 7：close */
+        CLOSE(7, "close"),
+        /** 8：open */
+        OPEN(8, "open");
+
+        private Integer code;
+        private String info;
+
+        ActivityState(Integer code, String info) {
+            this.code = code;
+            this.info = info;
+        }
+
+        public Integer getCode() {
+            return code;
+        }
+
+        public void setCode(Integer code) {
+            this.code = code;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+    }
+
+    /**
      * Lottery strategy model: overall probability, individual probability
      * Scenario: two lottery algorithm description, scenario A20%, B30%, C50%
      * Single probability: If A prize draw empty, B and C to maintain the current probability of winning, the user draws 20% of the throw for the A, due to the A inventory draw empty then the results are displayed as not winning. In order to operate the cost, usually this situation is used more often
