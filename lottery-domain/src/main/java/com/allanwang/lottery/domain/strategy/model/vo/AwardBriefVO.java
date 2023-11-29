@@ -1,31 +1,20 @@
-package com.allanwang.lottery.infrastructure.po;
+package com.allanwang.lottery.domain.strategy.model.vo;
 
-import java.util.Date;
-public class Award {
-    private Long id;
-
+/**
+ * award brief info
+ */
+public class AwardBriefVO {
+    /** award id */
     private String awardId;
 
-    // Types of prizes
-    // (text descriptions, redemption codes, coupons, physical prizes not available at this time)
+    /** award type */
     private Integer awardType;
 
+    /** award name */
     private String awardName;
 
-    // Prize content "Description, Key, Code".
+    /** award content */
     private String awardContent;
-
-    private Date createTime;
-
-    private Date updateTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getAwardId() {
         return awardId;
@@ -59,19 +48,14 @@ public class Award {
         this.awardContent = awardContent;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    @Override
+    public String toString() {
+        return "AwardBriefVO{" +
+                "awardId='" + awardId + '\'' +
+                ", awardType=" + awardType +
+                ", awardName='" + awardName + '\'' +
+                ", awardContent='" + awardContent + '\'' +
+                '}';
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

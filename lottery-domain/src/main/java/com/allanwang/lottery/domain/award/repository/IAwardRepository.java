@@ -1,6 +1,5 @@
 package com.allanwang.lottery.domain.award.repository;
 
-import com.allanwang.lottery.infrastructure.po.Award;
 /**
  * @description: Prize Table Warehouse Service Interface
  **/

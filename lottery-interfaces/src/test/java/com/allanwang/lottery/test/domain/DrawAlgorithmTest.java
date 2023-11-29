@@ -1,4 +1,4 @@
-package com.allanwang.lottery.test;
+package com.allanwang.lottery.test.domain;
 
 import com.allanwang.lottery.domain.strategy.model.vo.AwardRateInfo;
 import com.allanwang.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
@@ -16,7 +16,7 @@ import java.util.List;
 @SpringBootTest
 public class DrawAlgorithmTest {
 
-    //    @Resource(name = "defaultRateRandomDrawAlgorithm")
+    //    @Resource(name = "entiretyRateRandomDrawAlgorithm")
     //@Resource(name = "singleRateRandomDrawAlgorithm")
     @Resource(name = "entiretyRateRandomDrawAlgorithm")
     private IDrawAlgorithm randomDrawAlgorithm;

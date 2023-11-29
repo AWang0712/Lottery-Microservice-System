@@ -1,8 +1,8 @@
 package com.allanwang.lottery.domain.strategy.service.draw;
 
 import com.allanwang.lottery.domain.strategy.model.aggregates.StrategyRich;
+import com.allanwang.lottery.domain.strategy.model.vo.AwardBriefVO;
 import com.allanwang.lottery.domain.strategy.repository.IStrategyRepository;
-import com.allanwang.lottery.infrastructure.po.Award;
 
 import javax.annotation.Resource;
 
@@ -30,7 +30,7 @@ public class DrawStrategySupport extends DrawConfig{
      * @param awardId
      * @return award info
      */
-    protected Award queryAwardInfoByAwardId(String awardId){
+    protected AwardBriefVO queryAwardInfoByAwardId(String awardId){
         return strategyRepository.queryAwardInfo(awardId);
     }
 

@@ -5,30 +5,36 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+/**
+ * @description: strategy detail dao
+ */
 @Mapper
 public interface IStrategyDetailDao {
 
     /**
-     * query the detailed strategy list by strategy id
+     * query strategy detail by strategy id
      * @param strategyId
      * @return
      */
-
     List<StrategyDetail> queryStrategyDetailList(Long strategyId);
 
     /**
-     * query the no stock strategy award list by strategy id
+     * query no stock strategy award list
      * @param strategyId
      * @return
      */
     List<String> queryNoStockStrategyAwardList(Long strategyId);
 
     /**
-     * deduct the stock of the award
+     * deduct stock
      * @param strategyDetailReq
      * @return
      */
     int deductStock(StrategyDetail strategyDetailReq);
 
+    /**
+     * insert strategy detail
+     */
+    void insertList(List<StrategyDetail> list);
 
 }

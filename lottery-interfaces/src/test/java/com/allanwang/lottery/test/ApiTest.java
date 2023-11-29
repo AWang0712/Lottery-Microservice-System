@@ -71,55 +71,9 @@ public class ApiTest {
         System.out.println(map);
     }
 
-
-    @Test
-    public void test_DrawStrategy() {
-
-        List<Map<String, String>> strategyList = new ArrayList<>();
-
-        strategyList.add(new HashMap<String, String>() {{
-            put("awardDesc", "first prize：TV");
-            put("awardId", "10001");
-            put("awardCount", "3");
-            put("awardRate", "20");
-        }});
-
-        strategyList.add(new HashMap<String, String>() {{
-            put("awardDesc", "second prize：refrigerator");
-            put("awardId", "10002");
-            put("awardCount", "5");
-            put("awardRate", "30");
-        }});
-
-        strategyList.add(new HashMap<String, String>() {{
-            put("awardDesc", "third prize：washing machine");
-            put("awardId", "10003");
-            put("awardCount", "10");
-            put("awardRate", "50");
-        }});
-
-        DrawStrategy drawStrategy = new DrawStrategy();
-        drawStrategy.initRateTuple(strategyList);
-
-        for (int i = 0; i < 20; i++) {
-            System.out.println("result：" + drawStrategy.randomDraw());
-        }
-
-    }
-
-
-    @Test
-    public void test_random() {
-        SecureRandom random = new SecureRandom();
-
-        for (int i = 0; i < 20; i++) {
-            System.out.println(random.nextInt(1));
-        }
-    }
-
 }
 
-class DrawStrategy {
+/*class DrawStrategy {
 
     // (√5 - 1) / 2 = 0.6180339887     1.618:1 == 1:0.618，Math.pow(2, 32) * 0.6180339887 = 0x61c88647
     private final int HASH_INCREMENT = 0x61c88647;
@@ -137,7 +91,7 @@ class DrawStrategy {
      *
      * Then populate the array with each interval range, the index position and the corresponding prize value
      * @param drawConfig
-     */
+     *//*
     public void initRateTuple(List<Map<String, String>> drawConfig) {
         int cursorVal = 0;
         for (Map<String, String> drawMap : drawConfig) {
@@ -158,7 +112,7 @@ class DrawStrategy {
     /**
      * random draw
      * @return result
-     */
+     *//*
     public String randomDraw() {
         // random probability
         int rate = new SecureRandom().nextInt(100) + 1;
@@ -168,5 +122,5 @@ class DrawStrategy {
         return rateTuple[idx];
     }
 
-}
+}*/
 

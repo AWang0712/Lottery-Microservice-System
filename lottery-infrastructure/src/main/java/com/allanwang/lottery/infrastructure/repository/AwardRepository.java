@@ -1,8 +1,7 @@
-package com.allanwang.lottery.domain.award.repository.impl;
+package com.allanwang.lottery.infrastructure.repository;
 
 import com.allanwang.lottery.domain.award.repository.IAwardRepository;
-import com.allanwang.lottery.infrastructure.dao.IAwardDao;
-import com.allanwang.lottery.infrastructure.po.Award;
+
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;

@@ -4,12 +4,9 @@ import com.allanwang.lottery.common.Constants;
 import com.allanwang.lottery.domain.strategy.model.aggregates.StrategyRich;
 import com.allanwang.lottery.domain.strategy.model.req.DrawReq;
 import com.allanwang.lottery.domain.strategy.model.res.DrawResult;
-import com.allanwang.lottery.domain.strategy.model.vo.AwardRateInfo;
-import com.allanwang.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import com.allanwang.lottery.domain.strategy.model.vo.*;
 import com.allanwang.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
-import com.allanwang.lottery.infrastructure.po.Award;
-import com.allanwang.lottery.infrastructure.po.Strategy;
-import com.allanwang.lottery.infrastructure.po.StrategyDetail;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +24,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
     public DrawResult doDrawExec(DrawReq req) {
         // 1. get the strategy
         StrategyRich strategyRich = super.queryStrategyRich(req.getStrategyId());
-        Strategy strategy = strategyRich.getStrategy();
+        StrategyBriefVO strategy = strategyRich.getStrategy();
 
         // 2. check and init the rate data
         this.checkAndInitRateData(req.getStrategyId(), strategy.getStrategyMode(), strategyRich.getStrategyDetailList());
@@ -71,7 +68,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
      * @param strategyMode
      * @param strategyDetailList
      */
-    private void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetail> strategyDetailList) {
+    private void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetailBriefVO> strategyDetailList) {
 
         /*this if statement will cause NullPointerException if strategyMode is Entirety
         because rateTuple will not be initialized*/
@@ -90,7 +87,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
 
         // parse and init the rate data to hashmap
         List<AwardRateInfo> awardRateInfoList = new ArrayList<>(strategyDetailList.size());
-        for (StrategyDetail strategyDetail : strategyDetailList) {
+        for (StrategyDetailBriefVO strategyDetail : strategyDetailList) {
             awardRateInfoList.add(new AwardRateInfo(strategyDetail.getAwardId(), strategyDetail.getAwardRate()));
         }
 
@@ -113,7 +110,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
             return new DrawResult(uId, strategyId, Constants.DrawState.FAIL.getCode());
         }
 
-        Award award = super.queryAwardInfoByAwardId(awardId);
+        AwardBriefVO award = super.queryAwardInfoByAwardId(awardId);
         DrawAwardInfo drawAwardInfo = new DrawAwardInfo(award.getAwardId(), award.getAwardType(), award.getAwardName(), award.getAwardContent());
         logger.info("strategy lottery completed[won], user：{} strategy ID：{} award ID：{} award name：{}", uId, strategyId, awardId, award.getAwardName());
 
