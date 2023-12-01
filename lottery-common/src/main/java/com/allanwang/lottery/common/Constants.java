@@ -254,4 +254,19 @@ public class Constants {
         }
     }
 
+    /**
+     * Ids generator enum
+     */
+    public enum Ids {
+        /** snowflake
+         *  */
+        SnowFlake,
+        /** date algorithm
+         *  */
+        ShortCode,
+        /** random number algorithm
+         *  */
+        RandomNumeric;
+    }
+
 }

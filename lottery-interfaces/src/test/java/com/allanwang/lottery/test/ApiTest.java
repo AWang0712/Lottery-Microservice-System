@@ -1,11 +1,14 @@
 package com.allanwang.lottery.test;
 
+import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.net.NetUtil;
+import cn.hutool.core.util.IdUtil;
+import org.apache.commons.lang3.RandomStringUtils;
+
 import org.junit.Test;
+
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 
@@ -70,6 +73,13 @@ public class ApiTest {
 
         System.out.println(map);
     }
+
+    @Test
+    public void test_id() {
+        String random = RandomStringUtils.randomNumeric(9);
+        System.out.println(random);
+    }
+
 
 }
 
