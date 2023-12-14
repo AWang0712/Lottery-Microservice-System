@@ -14,6 +14,8 @@
  Date: 27/09/2022 13:25:24
 */
 
+create database lottery;
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -36,13 +38,13 @@ CREATE TABLE `activity` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update_time',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_activity_id` (`activity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='activity config';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='activity config';
 
 -- ----------------------------
 -- Records of activity
 -- ----------------------------
 BEGIN;
-INSERT INTO `activity` VALUES (1, 100001, 'activity name', 'test activity', '2023-08-08 08:14:50', '2023-09-08 20:14:50', 100, 10, 0, 'allan', '2023-08-08 08:14:50', '2023-08-08 08:14:50');
+INSERT INTO `activity` VALUES (1, 100001, 'activity name', 'test activity', '2023-08-08 08:14:50', '2023-09-08 20:14:50', 100, 10, 1, 'allan', '2023-08-08 08:14:50', '2023-08-08 08:14:50');
 COMMIT;
 
 -- ----------------------------
@@ -58,7 +60,8 @@ CREATE TABLE `award` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create_time',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update_time',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='award config';
+  UNIQUE KEY `idx_award_id` (`award_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='award config';
 
 -- ----------------------------
 -- Records of award
@@ -87,7 +90,7 @@ CREATE TABLE `strategy` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update_time',
   PRIMARY KEY (`id`),
   UNIQUE KEY `strategy_strategyId_uindex` (`strategy_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy config';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy config';
 
 -- ----------------------------
 -- Records of strategy
@@ -111,7 +114,7 @@ CREATE TABLE `strategy_detail` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create_time',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update_time',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy_detail';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='strategy_detail';
 
 -- ----------------------------
 -- Records of strategy_detail
@@ -120,7 +123,7 @@ BEGIN;
 INSERT INTO `strategy_detail` VALUES (1, 10001, '1', 'iMac', 10, 0, 0.05, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
 INSERT INTO `strategy_detail` VALUES (2, 10001, '2', 'iPhone', 20, 20, 0.15, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
 INSERT INTO `strategy_detail` VALUES (3, 10001, '3', 'ipad', 50, 50, 0.20, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (4, 10001, '4', 'AirPods', 100, 81, 0.25, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (4, 10001, '4', 'AirPods', 100, 80, 0.25, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
 INSERT INTO `strategy_detail` VALUES (5, 10001, '5', 'Book', 500, 391, 0.35, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
 COMMIT;
 
