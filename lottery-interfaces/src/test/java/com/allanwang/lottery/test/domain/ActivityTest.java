@@ -1,7 +1,6 @@
 package com.allanwang.lottery.test.domain;
 
 import com.allanwang.lottery.common.Constants;
-import com.allanwang.lottery.common.Result;
 import com.allanwang.lottery.domain.activity.model.aggregates.ActivityConfigRich;
 import com.allanwang.lottery.domain.activity.model.req.ActivityConfigReq;
 import com.allanwang.lottery.domain.activity.model.vo.ActivityVO;
