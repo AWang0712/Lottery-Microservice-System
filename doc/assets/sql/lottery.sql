@@ -45,7 +45,7 @@ CREATE TABLE `award` (
   `award_content` varchar(128) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT 'award_content (text, key, code)',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create_time',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update_time',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
   UNIQUE KEY `idx_award_id` (`award_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='award config';
 
