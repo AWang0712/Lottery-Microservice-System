@@ -17,6 +17,7 @@ CREATE TABLE `activity` (
   `begin_date_time` datetime DEFAULT NULL COMMENT 'begin_date_time',
   `end_date_time` datetime DEFAULT NULL COMMENT 'end_date_time',
   `stock_count` int(11) DEFAULT NULL COMMENT 'stock_count',
+  `stock_surplus_count` int(11) DEFAULT NULL COMMENT 'stock_surplus_count',
   `take_count` int(11) DEFAULT NULL COMMENT 'take_count per person',
   `state` tinyint(2) DEFAULT NULL COMMENT 'activity state：1 Edit, 2 Submit for review, 3 Withdraw for review, 4 Pass, 5 Run (status of worker scan after review passes), 6 Reject, 7 Close, 8 Open',
   `creator` varchar(64) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT 'creator',
@@ -24,7 +25,7 @@ CREATE TABLE `activity` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update_time',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_activity_id` (`activity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='activity config';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='activity config';
 
 -- ----------------------------
 -- Records of activity
