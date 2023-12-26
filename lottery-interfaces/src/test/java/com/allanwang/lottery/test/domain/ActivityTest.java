@@ -3,11 +3,14 @@ package com.allanwang.lottery.test.domain;
 import com.allanwang.lottery.common.Constants;
 import com.allanwang.lottery.domain.activity.model.aggregates.ActivityConfigRich;
 import com.allanwang.lottery.domain.activity.model.req.ActivityConfigReq;
+import com.allanwang.lottery.domain.activity.model.req.PartakeReq;
+import com.allanwang.lottery.domain.activity.model.res.PartakeResult;
 import com.allanwang.lottery.domain.activity.model.vo.ActivityVO;
 import com.allanwang.lottery.domain.activity.model.vo.AwardVO;
 import com.allanwang.lottery.domain.activity.model.vo.StrategyDetailVO;
 import com.allanwang.lottery.domain.activity.model.vo.StrategyVO;
 import com.allanwang.lottery.domain.activity.service.deploy.IActivityDeploy;
+import com.allanwang.lottery.domain.activity.service.partake.IActivityPartake;
 import com.allanwang.lottery.domain.activity.service.stateflow.IStateHandler;
 import com.alibaba.fastjson.JSON;
 import org.junit.Before;
@@ -38,6 +41,9 @@ public class ActivityTest {
 
     @Resource
     private IStateHandler stateHandler;
+
+    @Resource
+    private IActivityPartake activityPartake;
 
     private ActivityConfigRich activityConfigRich;
 
@@ -169,5 +175,14 @@ public class ActivityTest {
         logger.info("pass -> doing, test：{}", JSON.toJSONString(stateHandler.doing(120981321L, Constants.ActivityState.PASS)));
         logger.info("second arraignment：{}", JSON.toJSONString(stateHandler.checkPass(120981321L, Constants.ActivityState.EDIT)));
     }
+
+    @Test
+    public void test_activityPartake() {
+        PartakeReq req = new PartakeReq("Uhdgkw766120d", 100001L);
+        PartakeResult res = activityPartake.doPartake(req);
+        logger.info("request parameter：{}", JSON.toJSONString(req));
+        logger.info("test result：{}", JSON.toJSONString(res));
+    }
+
 
 }

@@ -1,10 +1,9 @@
 package com.allanwang.lottery.domain.activity.repository;
 
 import com.allanwang.lottery.common.Constants;
-import com.allanwang.lottery.domain.activity.model.vo.ActivityVO;
-import com.allanwang.lottery.domain.activity.model.vo.AwardVO;
-import com.allanwang.lottery.domain.activity.model.vo.StrategyDetailVO;
-import com.allanwang.lottery.domain.activity.model.vo.StrategyVO;
+import com.allanwang.lottery.domain.activity.model.req.PartakeReq;
+import com.allanwang.lottery.domain.activity.model.vo.*;
+
 
 import java.util.List;
 /**
@@ -48,5 +47,19 @@ public interface IActivityRepository {
      * @return
      */
     boolean alterStatus(Long activityId, Enum<Constants.ActivityState> beforeState, Enum<Constants.ActivityState> afterState);
+
+    /**
+     * query activity
+     * @param req
+     * @return    activity bill
+     */
+    ActivityBillVO queryActivityBill(PartakeReq req);
+
+    /**
+     * subtract activity stock
+     * @param activityId   activity id
+     * @return      subtract result
+     */
+    int subtractionActivityStock(Long activityId);
 
 }

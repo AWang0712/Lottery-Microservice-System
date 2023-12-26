@@ -21,7 +21,19 @@ public class Activity {
 
     private Integer stockCount;
 
+    /**
+     * stock surplus count
+     */
+    private Integer stockSurplusCount;
+
+
     private Integer takeCount;
+
+    /**
+     * strategy id
+     */
+    private Long strategyId;
+
 
     private Integer state;
 
@@ -87,6 +99,15 @@ public class Activity {
         this.stockCount = stockCount;
     }
 
+    public Integer getStockSurplusCount() {
+        return stockSurplusCount;
+    }
+
+    public void setStockSurplusCount(Integer stockSurplusCount) {
+        this.stockSurplusCount = stockSurplusCount;
+    }
+
+
     public Integer getTakeCount() {
         return takeCount;
     }
@@ -94,6 +115,15 @@ public class Activity {
     public void setTakeCount(Integer takeCount) {
         this.takeCount = takeCount;
     }
+
+    public Long getStrategyId() {
+        return strategyId;
+    }
+
+    public void setStrategyId(Long strategyId) {
+        this.strategyId = strategyId;
+    }
+
 
     public Integer getState() {
         return state;

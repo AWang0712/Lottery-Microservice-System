@@ -1,9 +1,15 @@
 package com.allanwang.lottery.domain.activity.service.partake;
 
+import com.allanwang.lottery.domain.activity.model.req.PartakeReq;
+import com.allanwang.lottery.domain.activity.model.res.PartakeResult;
+
+
 public interface IActivityPartake {
     /**
-     * TODO：Activity participation interface to be developed
+     * partake activity
+     * @param req
+     * @return
      */
-    void doPartake();
+    PartakeResult doPartake(PartakeReq req);
 
 }

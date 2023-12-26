@@ -146,12 +146,15 @@ CREATE TABLE `user_take_activity` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update time',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_uuid` (`uuid`) USING BTREE COMMENT 'anti-repetition id index'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='user take activity table';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='user take activity table';
 
 -- ----------------------------
 -- Records of user_take_activity
 -- ----------------------------
 BEGIN;
+INSERT INTO `user_take_activity` VALUES (1, 'EDrfwe0193131', 121019889410, 100001, '????', '2021-09-22 20:46:03', 10, 'lfjdlsoi230ii01', '2021-09-22 20:46:03', '2021-09-22 20:46:03');
+INSERT INTO `user_take_activity` VALUES (2, 'Ukdli109op811d', 121019889410, 100001, '????', '2021-09-22 20:47:41', 10, 'Ukdli109op811d', '2021-09-22 20:47:41', '2021-09-22 20:47:41');
+INSERT INTO `user_take_activity` VALUES (3, 'Uhdgkw766120d', 1443842109978345472, 100001, '???', '2021-10-01 15:35:16', 1, '100001_Uhdgkw766120d_1', '2021-10-01 15:38:01', '2021-10-01 15:38:01');
 COMMIT;
 
 -- ----------------------------

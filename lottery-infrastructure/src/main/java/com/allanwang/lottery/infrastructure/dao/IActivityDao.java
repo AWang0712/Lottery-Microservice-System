@@ -1,5 +1,6 @@
 package com.allanwang.lottery.infrastructure.dao;
 
+import com.allanwang.lottery.domain.activity.model.req.PartakeReq;
 import com.allanwang.lottery.domain.activity.model.vo.AlterStateVO;
 import com.allanwang.lottery.infrastructure.po.Activity;
 import org.apache.ibatis.annotations.Mapper;
@@ -30,5 +31,13 @@ public interface IActivityDao {
      * @return
      */
     int alterState(AlterStateVO alterStateVO);
+
+    /**
+     * subtract activity stock
+     * @param activityId
+     * @return
+     */
+    int subtractionActivityStock(Long activityId);
+
 
 }

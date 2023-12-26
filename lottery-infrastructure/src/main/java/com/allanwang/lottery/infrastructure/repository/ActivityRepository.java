@@ -1,24 +1,18 @@
 package com.allanwang.lottery.infrastructure.repository;
 
 import com.allanwang.lottery.common.Constants;
+import com.allanwang.lottery.domain.activity.model.req.PartakeReq;
 import com.allanwang.lottery.domain.activity.model.vo.*;
 import com.allanwang.lottery.domain.activity.repository.IActivityRepository;
-import com.allanwang.lottery.infrastructure.dao.IActivityDao;
-import com.allanwang.lottery.infrastructure.dao.IAwardDao;
-import com.allanwang.lottery.infrastructure.dao.IStrategyDao;
-import com.allanwang.lottery.infrastructure.dao.IStrategyDetailDao;
-import com.allanwang.lottery.infrastructure.po.Activity;
-import com.allanwang.lottery.infrastructure.po.Award;
-import com.allanwang.lottery.infrastructure.po.Strategy;
-import com.allanwang.lottery.infrastructure.po.StrategyDetail;
+import com.allanwang.lottery.infrastructure.dao.*;
+import com.allanwang.lottery.infrastructure.po.*;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * implements IActivityRepository
@@ -34,6 +28,9 @@ public class ActivityRepository implements IActivityRepository {
     private IStrategyDao strategyDao;
     @Resource
     private IStrategyDetailDao strategyDetailDao;
+    @Resource
+    private IUserTakeActivityCountDao userTakeActivityCountDao;
+
 
     @Override
     public void addActivity(ActivityVO activity) {
@@ -73,9 +70,42 @@ public class ActivityRepository implements IActivityRepository {
 
     @Override
     public boolean alterStatus(Long activityId, Enum<Constants.ActivityState> beforeState, Enum<Constants.ActivityState> afterState) {
-        AlterStateVO alterStateVO = new AlterStateVO(activityId,((Constants.ActivityState) beforeState).getCode(),((Constants.ActivityState) afterState).getCode());
+        AlterStateVO alterStateVO = new AlterStateVO(activityId, ((Constants.ActivityState) beforeState).getCode(), ((Constants.ActivityState) afterState).getCode());
         int count = activityDao.alterState(alterStateVO);
         return 1 == count;
+    }
+
+    @Override
+    public ActivityBillVO queryActivityBill(PartakeReq req) {
+
+        // query activity
+        Activity activity = activityDao.queryActivityById(req.getActivityId());
+
+        // query user take activity count
+        UserTakeActivityCount userTakeActivityCountReq = new UserTakeActivityCount();
+        userTakeActivityCountReq.setuId(req.getuId());
+        userTakeActivityCountReq.setActivityId(req.getActivityId());
+        UserTakeActivityCount userTakeActivityCount = userTakeActivityCountDao.queryUserTakeActivityCount(userTakeActivityCountReq);
+
+        // encapsulate the result
+        ActivityBillVO activityBillVO = new ActivityBillVO();
+        activityBillVO.setuId(req.getuId());
+        activityBillVO.setActivityId(req.getActivityId());
+        activityBillVO.setActivityName(activity.getActivityName());
+        activityBillVO.setBeginDateTime(activity.getBeginDateTime());
+        activityBillVO.setEndDateTime(activity.getEndDateTime());
+        activityBillVO.setTakeCount(activity.getTakeCount());
+        activityBillVO.setStockSurplusCount(activity.getStockSurplusCount());
+        activityBillVO.setStrategyId(activity.getStrategyId());
+        activityBillVO.setState(activity.getState());
+        activityBillVO.setUserTakeLeftCount(null == userTakeActivityCount ? null : userTakeActivityCount.getLeftCount());
+
+        return activityBillVO;
+    }
+
+    @Override
+    public int subtractionActivityStock(Long activityId) {
+        return activityDao.subtractionActivityStock(activityId);
     }
 
 }

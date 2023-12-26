@@ -80,8 +80,8 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
 
         IDrawAlgorithm drawAlgorithm = drawAlgorithmGroup.get(strategyMode);
 
-        // already init, no need to check and init
-        if (drawAlgorithm.isExistRateTuple(strategyId)) {
+        // check if the rate data has been initialized
+        if (drawAlgorithm.isExist(strategyId)) {
             return;
         }
 
@@ -91,7 +91,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
             awardRateInfoList.add(new AwardRateInfo(strategyDetail.getAwardId(), strategyDetail.getAwardRate()));
         }
 
-        drawAlgorithm.initRateTuple(strategyId, awardRateInfoList);
+        drawAlgorithm.initRateTuple(strategyId, strategyMode, awardRateInfoList);
 
     }
 

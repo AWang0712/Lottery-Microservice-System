@@ -34,6 +34,7 @@ public interface IStrategyDetailDao {
 
     /**
      * insert strategy detail
+     * @param list strategy detail list
      */
     void insertList(List<StrategyDetail> list);
 

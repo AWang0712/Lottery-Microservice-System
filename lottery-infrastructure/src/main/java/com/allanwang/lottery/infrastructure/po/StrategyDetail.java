@@ -1,11 +1,12 @@
 package com.allanwang.lottery.infrastructure.po;
 import java.math.BigDecimal;
+import java.util.Date;
 public class StrategyDetail {
 
     /**
      * auto_increment
      */
-    private String id;
+    private Long id;
 
     private Long strategyId;
 
@@ -29,15 +30,15 @@ public class StrategyDetail {
 
     private BigDecimal awardRate;
 
-    private String createTime;
+    private Date createTime;
 
-    private String updateTime;
+    private Date updateTime;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -90,19 +91,19 @@ public class StrategyDetail {
         this.awardRate = awardRate;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public String getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 }

@@ -7,7 +7,8 @@ public class Constants {
         SUCCESS("0000", "success"),
         UN_ERROR("0001","unknown error"),
         ILLEGAL_PARAMETER("0002","illegal parameter"),
-        INDEX_DUP("0003","primary key duplicate");
+        INDEX_DUP("0003","primary key duplicate"),
+        NO_UPDATE("0004", "SQL operation failed, no update");
 
         private String code;
         private String info;

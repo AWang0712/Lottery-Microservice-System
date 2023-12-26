@@ -31,16 +31,17 @@ public interface IDrawAlgorithm {
      * by which the time complexity of prize counting in rounds is reduced from O(n) to 0(1)
      *
      * @param strategyId
+     * @param strategyMode
      * @param awardRateInfoList  「data instance：AwardRateInfo.awardRate = 0.04」
      */
-    void initRateTuple(Long strategyId, List<AwardRateInfo> awardRateInfoList);
+    void initRateTuple(Long strategyId,Integer strategyMode, List<AwardRateInfo> awardRateInfoList);
 
     /**
      * determine whether the probability tuple exists
      * @param strategyId
      * @return
      */
-    boolean isExistRateTuple(Long strategyId);
+    boolean isExist(Long strategyId);
 
     /**
      * SecureRandom: is used to generate random numbers, which are then used to locate the prize information

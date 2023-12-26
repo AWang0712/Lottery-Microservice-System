@@ -1,5 +1,6 @@
 package com.allanwang.lottery.domain.strategy.service.algorithm;
 
+import com.allanwang.lottery.common.Constants;
 import com.allanwang.lottery.domain.strategy.model.vo.AwardRateInfo;
 
 import java.math.BigDecimal;
@@ -25,9 +26,20 @@ public abstract class BaseAlgorithm implements IDrawAlgorithm {
     protected Map<Long, List<AwardRateInfo>> awardRateInfoMap = new ConcurrentHashMap<>();
 
     @Override
-    public void initRateTuple(Long strategyId, List<AwardRateInfo> awardRateInfoList) {
+    public synchronized void initRateTuple(Long strategyId, Integer strategyMode, List<AwardRateInfo> awardRateInfoList) {
+
+        // pre check
+        if (isExist(strategyId)){
+            return;
+        }
+
         // store award rate info
         awardRateInfoMap.put(strategyId, awardRateInfoList);
+
+        // non-single probability, no need to store in cache, because this part of the lottery algorithm needs to process the winning probability in real time.
+        if (!Constants.StrategyMode.SINGLE.getCode().equals(strategyMode)) {
+            return;
+        }
 
         String[] rateTuple = rateTupleMap.computeIfAbsent(strategyId, k -> new String[RATE_TUPLE_LENGTH]);
 
@@ -46,9 +58,10 @@ public abstract class BaseAlgorithm implements IDrawAlgorithm {
     }
 
     @Override
-    public boolean isExistRateTuple(Long strategyId) {
-        return rateTupleMap.containsKey(strategyId);
+    public boolean isExist(Long strategyId) {
+        return awardRateInfoMap.containsKey(strategyId);
     }
+
 
     /**
      * Fibonacci hashing, calculating hash index subscript values

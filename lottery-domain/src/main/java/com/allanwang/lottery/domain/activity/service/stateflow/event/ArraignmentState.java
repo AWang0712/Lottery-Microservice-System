@@ -33,8 +33,7 @@ public class ArraignmentState extends AbstractState {
 
     @Override
     public Result close(Long activityId, Enum<Constants.ActivityState> currentState) {
-        boolean isSuccess = activityRepository.alterStatus(activityId, currentState, Constants.ActivityState.CLOSE);
-        return isSuccess ? Result.buildResult(Constants.ResponseCode.SUCCESS, "Activity close completed") : Result.buildErrorResult("Failed to change activity status");
+        return Result.buildResult(Constants.ResponseCode.UN_ERROR, "activity that is not denied cannot be closed");
     }
 
     @Override
