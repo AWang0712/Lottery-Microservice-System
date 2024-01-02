@@ -32,7 +32,7 @@ CREATE TABLE `activity` (
 -- Records of activity
 -- ----------------------------
 BEGIN;
-INSERT INTO `activity` VALUES (1, 100001, 'activity name', 'test activity', '2020-11-01 00:00:00', '2023-12-31 23:59:59', 100, 98, 10, 10001, 5, 'allan', '2023-08-08 08:14:50', '2023-08-08 08:14:50');
+INSERT INTO `activity` VALUES (1, 100001, 'activity name', 'test activity', '2020-11-01 00:00:00', '2023-12-31 23:59:59', 100, 88, 10, 10001, 5, 'allan', '2023-08-08 08:14:50', '2023-08-08 08:14:50');
 COMMIT;
 
 -- ----------------------------
@@ -109,10 +109,10 @@ CREATE TABLE `strategy_detail` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `strategy_detail` VALUES (1, 10001, '1', 'iMac', 10, 0, 0.05, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (2, 10001, '2', 'iPhone', 20, 20, 0.15, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (3, 10001, '3', 'ipad', 50, 50, 0.20, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (4, 10001, '4', 'AirPods', 100, 79, 0.25, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (5, 10001, '5', 'Book', 500, 390, 0.35, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (2, 10001, '2', 'iPhone', 20, 19, 0.15, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (3, 10001, '3', 'ipad', 50, 49, 0.20, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (4, 10001, '4', 'AirPods', 100, 76, 0.25, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (5, 10001, '5', 'Book', 500, 389, 0.35, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
