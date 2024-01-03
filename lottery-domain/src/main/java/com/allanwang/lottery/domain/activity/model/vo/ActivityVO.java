@@ -38,6 +38,12 @@ public class ActivityVO {
     private Integer takeCount;
 
     /**
+     * strategy ID
+     */
+    private Long strategyId;
+
+
+    /**
      * activity state
      */
     private Integer state;
@@ -102,6 +108,14 @@ public class ActivityVO {
     public void setTakeCount(Integer takeCount) {
         this.takeCount = takeCount;
     }
+    public Long getStrategyId() {
+        return strategyId;
+    }
+
+    public void setStrategyId(Long strategyId) {
+        this.strategyId = strategyId;
+    }
+
 
     public Integer getState() {
         return state;
@@ -129,6 +143,7 @@ public class ActivityVO {
                 ", endDateTime=" + endDateTime +
                 ", stockCount=" + stockCount +
                 ", takeCount=" + takeCount +
+                ", strategyId=" + strategyId +
                 ", state=" + state +
                 ", creator='" + creator + '\'' +
                 '}';

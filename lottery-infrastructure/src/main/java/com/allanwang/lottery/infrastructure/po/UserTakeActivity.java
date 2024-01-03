@@ -35,6 +35,18 @@ public class UserTakeActivity {
      * take_count
      */
     private Integer takeCount;
+
+    /**
+     * strategy_id
+     */
+    private Long strategyId;
+
+    /**
+     * order bill used state
+     * Constants.TaskState
+     */
+    private Integer state;
+
     /**
      * uuid
      */
@@ -103,6 +115,22 @@ public class UserTakeActivity {
 
     public void setTakeCount(Integer takeCount) {
         this.takeCount = takeCount;
+    }
+
+    public Long getStrategyId() {
+        return strategyId;
+    }
+
+    public void setStrategyId(Long strategyId) {
+        this.strategyId = strategyId;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public String getUuid() {

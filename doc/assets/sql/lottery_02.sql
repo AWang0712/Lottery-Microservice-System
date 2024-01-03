@@ -145,6 +145,8 @@ CREATE TABLE `user_take_activity` (
   `activity_name` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'activity name',
   `take_date` datetime DEFAULT NULL COMMENT 'take date',
   `take_count` int(11) DEFAULT NULL COMMENT 'take count',
+  `strategy_id` int(11) DEFAULT NULL COMMENT 'strategy id',
+  `state` tinyint(2) DEFAULT NULL COMMENT 'activity state (0: not used, 1: used)',
   `uuid` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'anti-repetition id',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update time',
@@ -156,11 +158,11 @@ CREATE TABLE `user_take_activity` (
 -- Records of user_take_activity
 -- ----------------------------
 BEGIN;
-INSERT INTO `user_take_activity` VALUES (4, 'fustack', 1444537120189480960, 100001, '???', '2021-10-03 13:37:33', 1, 10001, 1, 'allan_100001_1', '2023-10-03 13:37:42', '2023-10-03 13:37:42');
-INSERT INTO `user_take_activity` VALUES (6, 'fustack', 1444539043961536512, 100001, '???', '2021-10-03 13:45:18', 2, 10001, 1, 'allan_100001_2', '2023-10-03 13:45:37', '2023-10-03 13:45:37');
-INSERT INTO `user_take_activity` VALUES (7, 'fustack', 1444540455500021760, 100001, '???', '2021-10-03 13:50:57', 3, 10001, 1, 'allan_100001_3', '2023-10-03 13:50:57', '2023-10-03 13:50:57');
-INSERT INTO `user_take_activity` VALUES (8, 'fustack', 1444541564645965824, 100001, '???', '2021-10-03 13:55:22', 4, 10001, 1, 'allan_100001_4', '2023-10-03 13:55:21', '2023-10-03 13:55:21');
-INSERT INTO `user_take_activity` VALUES (9, 'fustack', 1444820310565273600, 100001, '???', '2021-10-04 08:23:00', 5, 10001, 1, 'allan_100001_5', '2023-10-04 08:23:00', '2023-10-04 08:23:00');
+INSERT INTO `user_take_activity` VALUES (4, 'allan', 1444537120189480960, 100001, '???', '2023-10-03 13:37:33', 1, 10001, 1, 'allan_100001_1', '2023-10-03 13:37:42', '2023-10-03 13:37:42');
+INSERT INTO `user_take_activity` VALUES (6, 'allan', 1444539043961536512, 100001, '???', '2023-10-03 13:45:18', 2, 10001, 1, 'allan_100001_2', '2023-10-03 13:45:37', '2023-10-03 13:45:37');
+INSERT INTO `user_take_activity` VALUES (7, 'allan', 1444540455500021760, 100001, '???', '2023-10-03 13:50:57', 3, 10001, 1, 'allan_100001_3', '2023-10-03 13:50:57', '2023-10-03 13:50:57');
+INSERT INTO `user_take_activity` VALUES (8, 'allan', 1444541564645965824, 100001, '???', '2023-10-03 13:55:22', 4, 10001, 1, 'allan_100001_4', '2023-10-03 13:55:21', '2023-10-03 13:55:21');
+INSERT INTO `user_take_activity` VALUES (9, 'allan', 1444820310565273600, 100001, '???', '2023-10-04 08:23:00', 5, 10001, 1, 'allan_100001_5', '2023-10-04 08:23:00', '2023-10-04 08:23:00');
 COMMIT;
 
 -- ----------------------------

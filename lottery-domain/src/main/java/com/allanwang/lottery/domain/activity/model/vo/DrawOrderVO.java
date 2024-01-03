@@ -1,0 +1,188 @@
+package com.allanwang.lottery.domain.activity.model.vo;
+
+
+import java.util.Date;
+
+/**
+ * @description: award order vo
+ */
+public class DrawOrderVO {
+
+    /**
+     * user ID
+     */
+    private String uId;
+
+    /**
+     * activity take ID
+     */
+    private Long takeId;
+    /**
+     * activity ID
+     */
+    private Long activityId;
+    /**
+     * order ID
+     */
+    private Long orderId;
+    /**
+     * strategy ID
+     */
+    private Long strategyId;
+    /**
+     * strategy mode
+     */
+    private Integer strategyMode;
+    /**
+     * grant type
+     */
+    private Integer grantType;
+    /**
+     * grant date
+     */
+    private Date grantDate;
+    /**
+     * grant state
+     */
+    private Integer grantState;
+    /**
+     * award ID
+     */
+    private String awardId;
+    /**
+     * award type
+     */
+    private Integer awardType;
+    /**
+     * award name
+     */
+    private String awardName;
+    /**
+     * award content
+     */
+    private String awardContent;
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
+
+    public Long getTakeId() {
+        return takeId;
+    }
+
+    public void setTakeId(Long takeId) {
+        this.takeId = takeId;
+    }
+
+    public Long getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public Long getStrategyId() {
+        return strategyId;
+    }
+
+    public void setStrategyId(Long strategyId) {
+        this.strategyId = strategyId;
+    }
+
+    public Integer getStrategyMode() {
+        return strategyMode;
+    }
+
+    public void setStrategyMode(Integer strategyMode) {
+        this.strategyMode = strategyMode;
+    }
+
+    public Integer getGrantType() {
+        return grantType;
+    }
+
+    public void setGrantType(Integer grantType) {
+        this.grantType = grantType;
+    }
+
+    public Date getGrantDate() {
+        return grantDate;
+    }
+
+    public void setGrantDate(Date grantDate) {
+        this.grantDate = grantDate;
+    }
+
+    public Integer getGrantState() {
+        return grantState;
+    }
+
+    public void setGrantState(Integer grantState) {
+        this.grantState = grantState;
+    }
+
+    public String getAwardId() {
+        return awardId;
+    }
+
+    public void setAwardId(String awardId) {
+        this.awardId = awardId;
+    }
+
+    public Integer getAwardType() {
+        return awardType;
+    }
+
+    public void setAwardType(Integer awardType) {
+        this.awardType = awardType;
+    }
+
+    public String getAwardName() {
+        return awardName;
+    }
+
+    public void setAwardName(String awardName) {
+        this.awardName = awardName;
+    }
+
+    public String getAwardContent() {
+        return awardContent;
+    }
+
+    public void setAwardContent(String awardContent) {
+        this.awardContent = awardContent;
+    }
+
+    @Override
+    public String toString() {
+        return "DrawOrderVO{" +
+                "uId='" + uId + '\'' +
+                ", takeId=" + takeId +
+                ", activityId=" + activityId +
+                ", orderId=" + orderId +
+                ", strategyId=" + strategyId +
+                ", strategyMode=" + strategyMode +
+                ", grantType=" + grantType +
+                ", grantDate=" + grantDate +
+                ", grantState=" + grantState +
+                ", awardId='" + awardId + '\'' +
+                ", awardType=" + awardType +
+                ", awardName='" + awardName + '\'' +
+                ", awardContent='" + awardContent + '\'' +
+                '}';
+    }
+
+}

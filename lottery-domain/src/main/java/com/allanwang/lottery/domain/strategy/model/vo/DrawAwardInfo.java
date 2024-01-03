@@ -1,5 +1,6 @@
 package com.allanwang.lottery.domain.strategy.model.vo;
 
+import java.util.Date;
 /**
  * @description: award info for draw result
  */
@@ -24,6 +25,21 @@ public class DrawAwardInfo {
      * award content
      */
     private String awardContent;
+
+    /**
+     * strategy mode
+     */
+    private Integer strategyMode;
+
+    /**
+     * grant type
+     */
+    private Integer grantType;
+    /**
+     * grant date
+     */
+    private Date grantDate;
+
 
     public DrawAwardInfo() {
     }
@@ -66,4 +82,29 @@ public class DrawAwardInfo {
     public void setAwardContent(String awardContent) {
         this.awardContent = awardContent;
     }
+
+    public Integer getStrategyMode() {
+        return strategyMode;
+    }
+
+    public void setStrategyMode(Integer strategyMode) {
+        this.strategyMode = strategyMode;
+    }
+
+    public Integer getGrantType() {
+        return grantType;
+    }
+
+    public void setGrantType(Integer grantType) {
+        this.grantType = grantType;
+    }
+
+    public Date getGrantDate() {
+        return grantDate;
+    }
+
+    public void setGrantDate(Date grantDate) {
+        this.grantDate = grantDate;
+    }
+
 }

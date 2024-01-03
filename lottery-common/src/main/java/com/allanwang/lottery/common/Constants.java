@@ -8,7 +8,8 @@ public class Constants {
         UN_ERROR("0001","unknown error"),
         ILLEGAL_PARAMETER("0002","illegal parameter"),
         INDEX_DUP("0003","primary key duplicate"),
-        NO_UPDATE("0004", "SQL operation failed, no update");
+        NO_UPDATE("0004", "SQL operation failed, no update"),
+        LOSING_DRAW("D001", "not winning");
 
         private String code;
         private String info;
@@ -269,5 +270,73 @@ public class Constants {
          *  */
         RandomNumeric;
     }
+
+    /**
+     * activity used state 0: unused, 1: used
+     */
+    public enum TaskState {
+
+        NO_USED(0, "unused"),
+        USED(1, "used");
+
+        private Integer code;
+        private String info;
+
+        TaskState(Integer code, String info) {
+            this.code = code;
+            this.info = info;
+        }
+
+        public Integer getCode() {
+            return code;
+        }
+
+        public void setCode(Integer code) {
+            this.code = code;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+    }
+
+    /**
+     * grant state 0: init, 1: complete, 2: fail
+     */
+    public enum GrantState{
+
+        INIT(0, "init"),
+        COMPLETE(1, "complete"),
+        FAIL(2, "fail");
+
+        private Integer code;
+        private String info;
+
+        GrantState(Integer code, String info) {
+            this.code = code;
+            this.info = info;
+        }
+
+        public Integer getCode() {
+            return code;
+        }
+
+        public void setCode(Integer code) {
+            this.code = code;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+    }
+
 
 }
