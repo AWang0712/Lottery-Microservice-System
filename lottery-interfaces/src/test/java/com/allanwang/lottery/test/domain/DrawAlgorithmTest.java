@@ -3,7 +3,7 @@ package com.allanwang.lottery.test.domain;
 import com.allanwang.lottery.common.Constants;
 import com.allanwang.lottery.domain.strategy.model.req.DrawReq;
 import com.allanwang.lottery.domain.strategy.model.res.DrawResult;
-import com.allanwang.lottery.domain.strategy.model.vo.AwardRateInfo;
+import com.allanwang.lottery.domain.strategy.model.vo.AwardRateVO;
 import com.allanwang.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
 import com.allanwang.lottery.domain.strategy.service.draw.IDrawExec;
 import com.allanwang.lottery.test.SpringRunnerTest;
@@ -37,12 +37,12 @@ public class DrawAlgorithmTest {
     @Before
     public void init() {
         // award info
-        List<AwardRateInfo> strategyList = new ArrayList<>();
-        strategyList.add(new AwardRateInfo("first prize：IMac", new BigDecimal("0.05")));
-        strategyList.add(new AwardRateInfo("second prize：iPhone", new BigDecimal("0.15")));
-        strategyList.add(new AwardRateInfo("third prize：iPad", new BigDecimal("0.20")));
-        strategyList.add(new AwardRateInfo("fourth prize：AirPods", new BigDecimal("0.25")));
-        strategyList.add(new AwardRateInfo("fifth prize: power bank", new BigDecimal("0.35")));
+        List<AwardRateVO> strategyList = new ArrayList<>();
+        strategyList.add(new AwardRateVO("first prize：IMac", new BigDecimal("0.05")));
+        strategyList.add(new AwardRateVO("second prize：iPhone", new BigDecimal("0.15")));
+        strategyList.add(new AwardRateVO("third prize：iPad", new BigDecimal("0.20")));
+        strategyList.add(new AwardRateVO("fourth prize：AirPods", new BigDecimal("0.25")));
+        strategyList.add(new AwardRateVO("fifth prize: power bank", new BigDecimal("0.35")));
 
         // init
         randomDrawAlgorithm.initRateTuple(100001L, Constants.StrategyMode.SINGLE.getCode(), strategyList);

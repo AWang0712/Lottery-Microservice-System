@@ -8,15 +8,19 @@ import com.allanwang.lottery.domain.activity.model.req.PartakeReq;
 import com.allanwang.lottery.domain.activity.model.res.PartakeResult;
 import com.allanwang.lottery.domain.activity.model.vo.DrawOrderVO;
 import com.allanwang.lottery.domain.activity.service.partake.IActivityPartake;
+import com.allanwang.lottery.domain.rule.model.req.DecisionMatterReq;
+import com.allanwang.lottery.domain.rule.model.res.EngineResult;
+import com.allanwang.lottery.domain.rule.service.engine.EngineFilter;
 import com.allanwang.lottery.domain.strategy.model.req.DrawReq;
 import com.allanwang.lottery.domain.strategy.model.res.DrawResult;
-import com.allanwang.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import com.allanwang.lottery.domain.strategy.model.vo.DrawAwardVO;
 import com.allanwang.lottery.domain.strategy.service.draw.IDrawExec;
 import com.allanwang.lottery.domain.support.ids.IIdGenerator;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @description: activity process impl
@@ -33,6 +37,9 @@ public class ActivityProcessImpl implements IActivityProcess {
     @Resource
     private Map<Constants.Ids, IIdGenerator> idGeneratorMap;
 
+    @Resource
+    private EngineFilter engineFilter;
+
     @Override
     public DrawProcessResult doDrawProcess(DrawProcessReq req) {
         // 1. take activity
@@ -48,7 +55,7 @@ public class ActivityProcessImpl implements IActivityProcess {
         if (Constants.DrawState.FAIL.getCode().equals(drawResult.getDrawState())) {
             return new DrawProcessResult(Constants.ResponseCode.LOSING_DRAW.getCode(), Constants.ResponseCode.LOSING_DRAW.getInfo());
         }
-        DrawAwardInfo drawAwardInfo = drawResult.getDrawAwardInfo();
+        DrawAwardVO drawAwardInfo = drawResult.getDrawAwardInfo();
 
         // 3. record draw order
         activityPartake.recordDrawOrder(buildDrawOrderVO(req, strategyId, takeId, drawAwardInfo));
@@ -59,7 +66,7 @@ public class ActivityProcessImpl implements IActivityProcess {
         return new DrawProcessResult(Constants.ResponseCode.SUCCESS.getCode(), Constants.ResponseCode.SUCCESS.getInfo(), drawAwardInfo);
     }
 
-    private DrawOrderVO buildDrawOrderVO(DrawProcessReq req, Long strategyId, Long takeId, DrawAwardInfo drawAwardInfo) {
+    private DrawOrderVO buildDrawOrderVO(DrawProcessReq req, Long strategyId, Long takeId, DrawAwardVO drawAwardInfo) {
         long orderId = idGeneratorMap.get(Constants.Ids.SnowFlake).nextId();
         DrawOrderVO drawOrderVO = new DrawOrderVO();
         drawOrderVO.setuId(req.getuId());

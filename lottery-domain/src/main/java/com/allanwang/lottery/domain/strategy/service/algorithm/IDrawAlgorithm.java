@@ -1,6 +1,6 @@
 package com.allanwang.lottery.domain.strategy.service.algorithm;
 
-import com.allanwang.lottery.domain.strategy.model.vo.AwardRateInfo;
+import com.allanwang.lottery.domain.strategy.model.vo.AwardRateVO;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public interface IDrawAlgorithm {
      * @param strategyMode
      * @param awardRateInfoList  「data instance：AwardRateInfo.awardRate = 0.04」
      */
-    void initRateTuple(Long strategyId,Integer strategyMode, List<AwardRateInfo> awardRateInfoList);
+    void initRateTuple(Long strategyId,Integer strategyMode, List<AwardRateVO> awardRateInfoList);
 
     /**
      * determine whether the probability tuple exists

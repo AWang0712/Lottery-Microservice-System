@@ -48,7 +48,7 @@ public class ActivityTest {
     private ActivityConfigRich activityConfigRich;
 
     /**
-     * TODO：ID generation strategy
+     * Map<Constants.Ids, IIdGenerator>: ID generation strategy
      */
     private Long activityId = 120981321L;
 

@@ -9,6 +9,7 @@ import com.allanwang.lottery.infrastructure.po.*;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * implements IActivityRepository
  */
-@Component
+@Repository
 public class ActivityRepository implements IActivityRepository {
 
     @Resource

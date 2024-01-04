@@ -11,6 +11,7 @@ import com.allanwang.lottery.infrastructure.po.UserStrategyExport;
 import com.allanwang.lottery.infrastructure.po.UserTakeActivity;
 import com.allanwang.lottery.infrastructure.po.UserTakeActivityCount;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -18,7 +19,7 @@ import java.util.Date;
 /**
  * @description: user take activity repository
  */
-@Component
+@Repository
 public class UserTakeActivityRepository implements IUserTakeActivityRepository {
 
     @Resource

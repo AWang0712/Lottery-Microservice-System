@@ -30,6 +30,42 @@ public class Constants {
     }
 
     /**
+     * global constants
+     */
+    public static final class Global {
+        /** null node value */
+        public static final Long TREE_NULL_NODE = 0L;
+    }
+
+    /**
+     * decision tree node type
+     */
+    public static final class NodeType{
+        /** stem */
+        public static final Integer STEM = 1;
+        /** fruit */
+        public static final Integer FRUIT = 2;
+    }
+
+    /**
+     * rule limit type
+     */
+    public static final class RuleLimitType {
+        /** equal */
+        public static final int EQUAL = 1;
+        /** greater than */
+        public static final int GT = 2;
+        /** less than */
+        public static final int LT = 3;
+        /** greater than & equal */
+        public static final int GE = 4;
+        /** less than & equal */
+        public static final int LE = 5;
+        /** enum */
+        public static final int ENUM = 6;
+    }
+
+    /**
      * activity state：1 Edit, 2 Submit for review, 3 Withdraw for review, 4 Pass, 5 Run (status of worker scan after review passes), 6 Reject, 7 Close, 8 Open
      */
     public enum ActivityState {

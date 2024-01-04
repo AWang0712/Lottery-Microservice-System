@@ -1,7 +1,7 @@
 package com.allanwang.lottery.domain.strategy.model.res;
 
 import com.allanwang.lottery.common.Constants;
-import com.allanwang.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import com.allanwang.lottery.domain.strategy.model.vo.DrawAwardVO;
 
 public class DrawResult {
 
@@ -14,7 +14,7 @@ public class DrawResult {
      */
     private Integer drawState = Constants.DrawState.FAIL.getCode();
 
-    private DrawAwardInfo drawAwardInfo;
+    private DrawAwardVO drawAwardInfo;
 
     public DrawResult() {
     }
@@ -25,7 +25,7 @@ public class DrawResult {
         this.drawState = drawState;
     }
 
-    public DrawResult(String uId, Long strategyId, Integer drawState, DrawAwardInfo drawAwardInfo) {
+    public DrawResult(String uId, Long strategyId, Integer drawState, DrawAwardVO drawAwardInfo) {
         this.uId = uId;
         this.strategyId = strategyId;
         this.drawState = drawState;
@@ -56,11 +56,11 @@ public class DrawResult {
         this.drawState = drawState;
     }
 
-    public DrawAwardInfo getDrawAwardInfo() {
+    public DrawAwardVO getDrawAwardInfo() {
         return drawAwardInfo;
     }
 
-    public void setDrawAwardInfo(DrawAwardInfo drawAwardInfo) {
+    public void setDrawAwardInfo(DrawAwardVO drawAwardInfo) {
         this.drawAwardInfo = drawAwardInfo;
     }
 

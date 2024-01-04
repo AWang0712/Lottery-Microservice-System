@@ -1,7 +1,7 @@
 package com.allanwang.lottery.domain.strategy.service.algorithm;
 
 import com.allanwang.lottery.common.Constants;
-import com.allanwang.lottery.domain.strategy.model.vo.AwardRateInfo;
+import com.allanwang.lottery.domain.strategy.model.vo.AwardRateVO;
 
 import java.math.BigDecimal;
 import java.security.SecureRandom;
@@ -23,10 +23,10 @@ public abstract class BaseAlgorithm implements IDrawAlgorithm {
 
     // intervals of probability
     // strategyId -> [awardId->begin, awardId->end]
-    protected Map<Long, List<AwardRateInfo>> awardRateInfoMap = new ConcurrentHashMap<>();
+    protected Map<Long, List<AwardRateVO>> awardRateInfoMap = new ConcurrentHashMap<>();
 
     @Override
-    public synchronized void initRateTuple(Long strategyId, Integer strategyMode, List<AwardRateInfo> awardRateInfoList) {
+    public synchronized void initRateTuple(Long strategyId, Integer strategyMode, List<AwardRateVO> awardRateInfoList) {
 
         // pre check
         if (isExist(strategyId)){
@@ -44,7 +44,7 @@ public abstract class BaseAlgorithm implements IDrawAlgorithm {
         String[] rateTuple = rateTupleMap.computeIfAbsent(strategyId, k -> new String[RATE_TUPLE_LENGTH]);
 
         int cursorVal = 0;
-        for (AwardRateInfo awardRateInfo : awardRateInfoList) {
+        for (AwardRateVO awardRateInfo : awardRateInfoList) {
             int rateVal = awardRateInfo.getAwardRate().multiply(new BigDecimal(100)).intValue();
 
             // populate probability range values in a loop

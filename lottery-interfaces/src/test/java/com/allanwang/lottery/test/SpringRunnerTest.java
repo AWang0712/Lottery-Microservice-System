@@ -8,9 +8,7 @@ import com.allanwang.lottery.domain.award.service.goods.IDistributionGoods;
 
 import com.allanwang.lottery.domain.strategy.model.req.DrawReq;
 import com.allanwang.lottery.domain.strategy.model.res.DrawResult;
-import com.allanwang.lottery.domain.strategy.model.vo.AwardRateInfo;
-import com.allanwang.lottery.domain.strategy.model.vo.DrawAwardInfo;
-import com.allanwang.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
+import com.allanwang.lottery.domain.strategy.model.vo.DrawAwardVO;
 import com.allanwang.lottery.domain.strategy.service.draw.IDrawExec;
 import com.allanwang.lottery.infrastructure.dao.IActivityDao;
 import com.allanwang.lottery.infrastructure.po.Activity;
@@ -20,14 +18,10 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.json.JsonbTester;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -68,7 +62,7 @@ public class SpringRunnerTest {
         }
 
         // encapsulate distribution parameters，orderId：2109313442431 is simulated ID，needs to be generated when the user participates in an award claim
-        DrawAwardInfo drawAwardInfo = drawResult.getDrawAwardInfo();
+        DrawAwardVO drawAwardInfo = drawResult.getDrawAwardInfo();
         GoodsReq goodsReq = new GoodsReq(drawResult.getuId(), "2109313442431", drawAwardInfo.getAwardId(), drawAwardInfo.getAwardName(), drawAwardInfo.getAwardContent());
 
         // based on awardType get the corresponding award distribution service from the lottery factory
