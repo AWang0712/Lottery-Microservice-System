@@ -9,7 +9,9 @@ public class Constants {
         ILLEGAL_PARAMETER("0002","illegal parameter"),
         INDEX_DUP("0003","primary key duplicate"),
         NO_UPDATE("0004", "SQL operation failed, no update"),
-        LOSING_DRAW("D001", "not winning");
+        LOSING_DRAW("D001", "losing draw"),
+        RULE_ERR("D002", "quantification crowd rule error");
+
 
         private String code;
         private String info;
