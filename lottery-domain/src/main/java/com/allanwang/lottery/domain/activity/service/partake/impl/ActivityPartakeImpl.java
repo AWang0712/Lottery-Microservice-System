@@ -88,7 +88,7 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
             return transactionTemplate.execute(status -> {
                 try {
                     // subtract personal take left count
-                    int updateCount = userTakeActivityRepository.subtractionLeftCount(bill.getActivityId(), bill.getActivityName(), bill.getTakeCount(), bill.getUserTakeLeftCount(), partake.getuId(), partake.getPartakeDate());
+                    int updateCount = userTakeActivityRepository.subtractionLeftCount(bill.getActivityId(), bill.getActivityName(), bill.getTakeCount(), bill.getUserTakeLeftCount(), partake.getuId());
                     if (0 == updateCount) {
                         status.setRollbackOnly();
                         logger.error("Get activity, subtract partake times failed, activityId：{} uId：{}", partake.getActivityId(), partake.getuId());

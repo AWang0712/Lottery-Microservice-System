@@ -21,7 +21,7 @@ public interface IUserTakeActivityRepository {
      * @param partakeDate
      * @return
      */
-    int subtractionLeftCount(Long activityId, String activityName, Integer takeCount, Integer userTakeLeftCount, String uId, Date partakeDate);
+    int subtractionLeftCount(Long activityId, String activityName, Integer takeCount, Integer userTakeLeftCount, String uId);
 
     /**
      * take activity (by user)
