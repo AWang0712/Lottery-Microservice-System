@@ -95,6 +95,11 @@
         </dependency>
         <!-- MapStruct end -->
 
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
         <!-- business -->
         <dependency>
             <groupId>com.allanwang.lottery</groupId>

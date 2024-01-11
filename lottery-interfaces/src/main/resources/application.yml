@@ -1,6 +1,46 @@
 server:
   port: 8080
 
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      # The number of times a message is retransmitted after an error occurs.
+      retries: 1
+      # When there are multiple messages that need to be sent to the same partition, the producer puts them in the same batch.
+      # This parameter specifies the size of memory that can be used by a batch, in bytes.
+      batch-size: 16384
+      # Sets the size of the producer memory buffer.
+      buffer-memory: 33554432
+      # How keys are serialized
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # How values are serialized
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # acks=0 ： The producer does not wait for any response from the server before successfully writing the message.
+      # acks=1 ： As soon as the message is received by the leader node of the cluster, the producer receives a success response from the server.
+      # acks=all ： The producer receives a success response from the server only when all nodes involved in the replication have received the message.
+      acks: 1
+    consumer:
+      # Auto-commit time interval. In spring boot 2.X version here is the value of the type of Duration need to comply with a specific format, such as 1S, 1M, 2H, 5D
+      auto-commit-interval: 1S
+      # This attribute specifies what the consumer should do if it reads a partition with no offset or an invalid offset:
+      # latest (Default) In case the offset is invalid, the consumer will start reading data from the newest record (the one generated after the consumer was started)
+      # earliest ：In case of invalid offsets, the consumer will read the records of the partition from the starting position
+      auto-offset-reset: earliest
+      # whether to automatically submit the offset, the default value is true, in order to avoid duplicate data and data loss, you can set it to false, and then manually submit the offset
+      enable-auto-commit: false
+      # How keys are deserialized
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # The way values are deserialized
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      # The number of threads running in the listener container.
+      concurrency: 5
+      # Listener is responsible for ack, and commits immediately with every call to.
+      ack-mode: manual_immediate
+      missing-topics-fatal: false
+
+
 # multi-db-router configuration
 mini-db-router:
   jdbc:
@@ -26,6 +66,7 @@ mini-db-router:
         username: root
         password: 19970712Wan
 
+# mybatis configuration
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml
   config-location:  classpath:/mybatis/config/mybatis-config.xml
