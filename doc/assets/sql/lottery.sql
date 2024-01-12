@@ -32,7 +32,7 @@ CREATE TABLE `activity` (
 -- Records of activity
 -- ----------------------------
 BEGIN;
-INSERT INTO `activity` VALUES (1, 100001, 'activity name', 'test activity', '2020-11-01 00:00:00', '2024-12-31 23:59:59', 100, 88, 10, 10001, 5, 'allan', '2023-08-08 08:14:50', '2023-08-08 08:14:50');
+INSERT INTO `activity` VALUES (1, 100001, 'activity name', 'test activity', '2020-11-01 00:00:00', '2024-12-31 23:59:59', 100, 80, 10, 10001, 5, 'allan', '2023-08-08 08:14:50', '2023-08-08 08:14:50');
 INSERT INTO `activity` VALUES (3, 100002, 'activity name 2', 'test activity', '2021-10-01 00:00:00', '2024-10-30 23:59:59', 100, 100, 10, 10001, 5, 'allan', '2023-10-05 15:49:21', '2023-10-05 15:49:21');
 COMMIT;
 
@@ -75,7 +75,7 @@ CREATE TABLE `rule_tree` (
   `create_time` datetime DEFAULT NULL COMMENT 'create time',
   `update_time` datetime DEFAULT NULL COMMENT 'update time',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10002 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2110081903 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of rule_tree
@@ -185,8 +185,8 @@ CREATE TABLE `strategy_detail` (
 BEGIN;
 INSERT INTO `strategy_detail` VALUES (1, 10001, '1', 'iMac', 10, 0, 0.05, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
 INSERT INTO `strategy_detail` VALUES (2, 10001, '2', 'iPhone', 20, 19, 0.15, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (3, 10001, '3', 'ipad', 50, 49, 0.20, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
-INSERT INTO `strategy_detail` VALUES (4, 10001, '4', 'AirPods', 100, 76, 0.25, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (3, 10001, '3', 'ipad', 50, 44, 0.20, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
+INSERT INTO `strategy_detail` VALUES (4, 10001, '4', 'AirPods', 100, 73, 0.25, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
 INSERT INTO `strategy_detail` VALUES (5, 10001, '5', 'Book', 500, 389, 0.35, '2023-08-15 15:38:05', '2023-08-15 15:38:05');
 COMMIT;
 
