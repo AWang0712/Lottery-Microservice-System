@@ -17,12 +17,13 @@ CREATE TABLE `user_strategy_export_000` (
   `strategy_mode` tinyint(2) DEFAULT NULL COMMENT 'strategy mode（1: single probability 2: total probability）',
   `grant_type` tinyint(2) DEFAULT NULL COMMENT 'grant type（1: immediate 2: timing[include activity end] 3: artificial）',
   `grant_date` datetime DEFAULT NULL COMMENT 'grant date',
-  `grant_state` int(11) DEFAULT NULL COMMENT 'grant state',
+  `grant_state` tinyint(4) DEFAULT NULL COMMENT 'grant state',
   `award_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award id',
   `award_type` tinyint(2) DEFAULT NULL COMMENT 'award type（1: text description 2: exchange code 3: coupon 4: physical prize）',
   `award_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award name',
   `award_content` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award content「text description Key、code」',
   `uuid` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'anti-repetition id',
+  `mq_state` tinyint(4) DEFAULT NULL COMMENT 'massage sent state（0: not sent 1: sent, 2: sent failed）',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update time',
   PRIMARY KEY (`id`),
@@ -48,22 +49,26 @@ CREATE TABLE `user_strategy_export_001` (
   `strategy_mode` tinyint(2) DEFAULT NULL COMMENT 'strategy mode（1: single probability、2: total probability）',
   `grant_type` tinyint(2) DEFAULT NULL COMMENT 'grant type（1: immediate、2: timing[include activity end]、3: artificial）',
   `grant_date` datetime DEFAULT NULL COMMENT 'grant date',
-  `grant_state` int(11) DEFAULT NULL COMMENT 'grant state',
+  `grant_state` tinyint(4) DEFAULT NULL COMMENT 'grant state',
   `award_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award id',
   `award_type` tinyint(2) DEFAULT NULL COMMENT 'award type（1: text description、2: exchange code、3: coupon、4: physical prize）',
   `award_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award name',
   `award_content` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award content「text description、Key、code」',
   `uuid` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'anti-repetition id',
+  `mq_state` tinyint(4) DEFAULT NULL COMMENT 'message sent state（0: not sent、1: sent、2: sent failed）',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update time',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_uuid` (`uuid`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='user strategy export table';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='user strategy export table';
 
 -- ----------------------------
 -- Records of user_strategy_export_001
 -- ----------------------------
 BEGIN;
+INSERT INTO `user_strategy_export_001` VALUES (1, 'allan', 100001, 1454347265400504320, 10001, 2, 1, '2023-10-30 15:19:43', 1, '3', 1, 'ipad', 'Code', '1454347264666501120', 1, '2023-10-30 15:19:43', '2023-10-30 15:19:43');
+INSERT INTO `user_strategy_export_001` VALUES (2, 'allan', 100001, 1454351703703945216, 10001, 2, 1, '2023-10-30 15:37:21', 1, '3', 1, 'ipad', 'Code', '1454351703137714176', 1, '2023-10-30 15:37:21', '2023-10-30 15:37:21');
+INSERT INTO `user_strategy_export_001` VALUES (3, 'allan', 100001, 1454355276684722176, 10001, 2, 1, '2023-10-30 15:51:33', 1, '3', 1, 'ipad', 'Code', '1454355275833278464', 1, '2023-10-30 15:51:33', '2023-10-30 15:51:33');
 COMMIT;
 
 -- ----------------------------
@@ -79,12 +84,13 @@ CREATE TABLE `user_strategy_export_002` (
   `strategy_mode` tinyint(2) DEFAULT NULL COMMENT 'strategy mode（1: single probability、2: total probability）',
   `grant_type` tinyint(2) DEFAULT NULL COMMENT 'grant type（1: immediate、2: timing[include activity end]、3: artificial）',
   `grant_date` datetime DEFAULT NULL COMMENT 'grant date',
-  `grant_state` int(11) DEFAULT NULL COMMENT 'grant state',
+  `grant_state` tinyint(4) DEFAULT NULL COMMENT 'grant state',
   `award_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award id',
   `award_type` tinyint(2) DEFAULT NULL COMMENT 'award type（1: text description、2: exchange code、3: coupon、4: physical prize）',
   `award_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award name',
   `award_content` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award content「text description、Key、code」',
   `uuid` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'anti-repetition id',
+  `mq_state` tinyint(4) DEFAULT NULL COMMENT 'message sent state（0: not sent、1: sent、2: sent failed）',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update time',
   PRIMARY KEY (`id`),
@@ -110,12 +116,13 @@ CREATE TABLE `user_strategy_export_003` (
   `strategy_mode` tinyint(2) DEFAULT NULL COMMENT 'strategy mode（1: single probability、2: total probability）',
   `grant_type` tinyint(2) DEFAULT NULL COMMENT 'grant type（1: immediate、2: timing[include activity end]、3: artificial）',
   `grant_date` datetime DEFAULT NULL COMMENT 'grant date',
-  `grant_state` int(11) DEFAULT NULL COMMENT 'grant state',
+  `grant_state` tinyint(4) DEFAULT NULL COMMENT 'grant state',
   `award_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award id',
   `award_type` tinyint(2) DEFAULT NULL COMMENT 'award type（1: text description、2: exchange code、3: coupon、4: physical prize）',
   `award_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award name',
   `award_content` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'award content「text description、Key、code」',
   `uuid` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'anti-repetition id',
+  `mq_state` tinyint(4) DEFAULT NULL COMMENT 'message sent state（0: not sent、1: sent、2: sent failed）',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update time',
   PRIMARY KEY (`id`),
