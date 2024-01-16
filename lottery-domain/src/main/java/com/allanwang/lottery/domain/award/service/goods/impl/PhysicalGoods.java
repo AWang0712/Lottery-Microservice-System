@@ -20,7 +20,7 @@ public class PhysicalGoods extends DistributionBase implements IDistributionGood
         logger.info("simulate the call for distribute physical goods uId：{} awardContent：{}", req.getuId(), req.getAwardContent());
 
         // update the user award state
-        super.updateUserAwardState(req.getuId(), req.getOrderId(), req.getAwardId(), Constants.AwardState.SUCCESS.getCode(), Constants.AwardState.SUCCESS.getInfo());
+        super.updateUserAwardState(req.getuId(), req.getOrderId(), req.getAwardId(), Constants.GrantState.COMPLETE.getCode());
 
         return new DistributionRes(req.getuId(), Constants.AwardState.SUCCESS.getCode(), Constants.AwardState.SUCCESS.getInfo());
     }

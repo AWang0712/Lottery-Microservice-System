@@ -133,7 +133,7 @@ CREATE TABLE `user_strategy_export_003` (
 -- Records of user_strategy_export_003
 -- ----------------------------
 BEGIN;
-INSERT INTO `user_strategy_export_003` VALUES (1, 'Uhdgkw766120d', 120405215, 1443558966104850432, 42480428672, 1, 1, '2023-09-30 20:50:52', 1, '1', 1, 'IMac', '????', '1443558966104850432', '2023-09-30 20:50:52', '2023-09-30 20:50:52');
+INSERT INTO `user_strategy_export_003` VALUES (1, 'Uhdgkw766120d', 120405215, 1443558966104850432, 42480428672, 1, 1, '2023-09-30 20:50:52', 1, '1', 1, 'IMac', '????', '1443558966104850432', NULL, '2023-09-30 20:50:52', '2023-09-30 20:50:52');
 COMMIT;
 
 -- ----------------------------
@@ -155,7 +155,7 @@ CREATE TABLE `user_take_activity` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update time',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_uuid` (`uuid`) USING BTREE COMMENT 'anti-repetition id'
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='user take activity table';
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='user take activity table';
 
 -- ----------------------------
 -- Records of user_take_activity
@@ -163,6 +163,9 @@ CREATE TABLE `user_take_activity` (
 BEGIN;
 INSERT INTO `user_take_activity` VALUES (16, 'Uhdgkw766120d', 1443899607431151616, 100001, 'test', '2023-10-01 19:24:27', 2, NULL, NULL, 'Uhdgkw766120d_100001_2', '2023-10-01 19:24:27', '2023-10-01 19:24:27');
 INSERT INTO `user_take_activity` VALUES (17, 'Uhdgkw766120d', 1443900230654394368, 100001, 'test', '2023-10-01 19:26:56', 3, NULL, NULL, 'Uhdgkw766120d_100001_3', '2023-10-01 19:26:56', '2023-10-01 19:26:56');
+INSERT INTO `user_take_activity` VALUES (18, 'allan', 1454347264666501120, 100001, 'activity name', '2023-10-30 15:19:43', 1, 10001, 1, 'allan_100001_1', '2023-10-30 15:19:43', '2023-10-30 15:19:43');
+INSERT INTO `user_take_activity` VALUES (19, 'allan', 1454351703137714176, 100001, 'activity name', '2023-10-30 15:37:21', 2, 10001, 1, 'allan_100001_2', '2023-10-30 15:37:21', '2023-10-30 15:37:21');
+INSERT INTO `user_take_activity` VALUES (20, 'allan', 1454355275833278464, 100001, 'activity name', '2023-10-30 15:51:32', 3, 10001, 1, 'allan_100001_3', '2023-10-30 15:51:33', '2023-10-30 15:51:33');
 COMMIT;
 
 -- ----------------------------
@@ -179,13 +182,14 @@ CREATE TABLE `user_take_activity_count` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'update time',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_uId_activityId` (`u_id`,`activity_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='user take activity count table';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='user take activity count table';
 
 -- ----------------------------
 -- Records of user_take_activity_count
 -- ----------------------------
 BEGIN;
 INSERT INTO `user_take_activity_count` VALUES (1, 'Uhdgkw766120d', 100001, 10, 6, '2023-10-01 15:29:27', '2023-10-01 15:29:27');
+INSERT INTO `user_take_activity_count` VALUES (2, 'allan', 100001, 10, 7, '2023-10-30 15:19:43', '2023-10-30 15:19:43');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

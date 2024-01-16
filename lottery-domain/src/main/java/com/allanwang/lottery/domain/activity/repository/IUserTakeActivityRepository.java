@@ -1,5 +1,6 @@
 package com.allanwang.lottery.domain.activity.repository;
 
+import com.allanwang.middleware.db.router.annotation.DBRouter;
 import com.allanwang.lottery.domain.activity.model.vo.DrawOrderVO;
 import com.allanwang.lottery.domain.activity.model.vo.UserTakeActivityVO;
 
@@ -61,5 +62,13 @@ public interface IUserTakeActivityRepository {
      */
     UserTakeActivityVO queryNoConsumedTakeActivityOrder(Long activityId, String uId);
 
+    /**
+     * update invoice MQ state
+     *
+     * @param uId
+     * @param orderId
+     * @param mqState
+     */
+    void updateInvoiceMqState(String uId, Long orderId, Integer mqState);
 
 }

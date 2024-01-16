@@ -35,6 +35,9 @@ public class UserStrategyExport {
     private String awardContent;
     /** uuid */
     private String uuid;
+    /** message queue state */
+    private Integer MqState;
+
     /** create time */
     private Date createTime;
     /** update time */
@@ -151,6 +154,15 @@ public class UserStrategyExport {
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
+
+    public Integer getMqState() {
+        return MqState;
+    }
+
+    public void setMqState(Integer mqState) {
+        MqState = mqState;
+    }
+
 
     public Date getCreateTime() {
         return createTime;

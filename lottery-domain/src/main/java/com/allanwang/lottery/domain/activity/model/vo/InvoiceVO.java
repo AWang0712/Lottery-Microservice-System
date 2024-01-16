@@ -1,58 +1,37 @@
-package com.allanwang.lottery.domain.award.model.req;
+package com.allanwang.lottery.domain.activity.model.vo;
 
 import com.allanwang.lottery.domain.award.model.vo.ShippingAddress;
 
 /**
- * @description: Prize shipping information
- * @version: 1.0.0
+ * @description: award invoice, to send MQ message, async send award to user
  */
+public class InvoiceVO {
 
-public class GoodsReq {
-
-    /** user id */
+    /** uid */
     private String uId;
 
-    /** lottery order ID */
+    /** order id */
     private Long orderId;
 
-    /** award ID */
+    /** award id */
     private String awardId;
 
     /**
-     * award name
+     * award type
      */
+    private Integer awardType;
+
+    /** award name */
     private String awardName;
 
-    /**
-     * award content
-     */
+    /** award content */
     private String awardContent;
 
-    /** 4-level shipping address (only physical goods require an address) */
+    /** shipping address */
     private ShippingAddress shippingAddress;
 
-    /** Extended information for the content of pass through fields required for the issuance of some personalized goods */
+    /** ext info */
     private String extInfo;
-
-    public GoodsReq() {
-    }
-
-    public GoodsReq(String uId, Long orderId, String awardId, String awardName, String awardContent) {
-        this.uId = uId;
-        this.orderId = orderId;
-        this.awardId = awardId;
-        this.awardName = awardName;
-        this.awardContent = awardContent;
-    }
-
-    public GoodsReq(String uId, Long orderId, String awardId, String awardName, String awardContent, ShippingAddress shippingAddress) {
-        this.uId = uId;
-        this.orderId = orderId;
-        this.awardId = awardId;
-        this.awardName = awardName;
-        this.awardContent = awardContent;
-        this.shippingAddress = shippingAddress;
-    }
 
     public String getuId() {
         return uId;
@@ -76,6 +55,14 @@ public class GoodsReq {
 
     public void setAwardId(String awardId) {
         this.awardId = awardId;
+    }
+
+    public Integer getAwardType() {
+        return awardType;
+    }
+
+    public void setAwardType(Integer awardType) {
+        this.awardType = awardType;
     }
 
     public String getAwardName() {
@@ -108,6 +95,20 @@ public class GoodsReq {
 
     public void setExtInfo(String extInfo) {
         this.extInfo = extInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "InvoiceVO{" +
+                "uId='" + uId + '\'' +
+                ", orderId=" + orderId +
+                ", awardId='" + awardId + '\'' +
+                ", awardType=" + awardType +
+                ", awardName='" + awardName + '\'' +
+                ", awardContent='" + awardContent + '\'' +
+                ", shippingAddress=" + shippingAddress +
+                ", extInfo='" + extInfo + '\'' +
+                '}';
     }
 }
 

@@ -1,7 +1,9 @@
 package com.allanwang.lottery.test.application;
 
 
-import com.allanwang.lottery.application.mq.KafkaProducer;
+import com.allanwang.lottery.application.mq.producer.KafkaProducer;
+import com.allanwang.lottery.common.Constants;
+import com.allanwang.lottery.domain.activity.model.vo.InvoiceVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -25,10 +27,21 @@ public class KafkaProducerTest {
 
     @Test
     public void test_send() throws InterruptedException {
-        // send message circularly
-        while (true) {
-            kafkaProducer.send("Hello, I am Lottery 001");
-            Thread.sleep(3500);
+        InvoiceVO invoice = new InvoiceVO();
+        invoice.setuId("allan");
+        invoice.setOrderId(1444540456057864192L);
+        invoice.setAwardId("3");
+        invoice.setAwardType(Constants.AwardType.DESC.getCode());
+        invoice.setAwardName("Code");
+        invoice.setAwardContent("MacBook Pro");
+        invoice.setShippingAddress(null);
+        invoice.setExtInfo(null);
+
+        kafkaProducer.sendLotteryInvoice(invoice);
+
+        while (true){
+            Thread.sleep(10000);
         }
+
     }
 }

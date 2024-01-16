@@ -9,7 +9,6 @@ import com.allanwang.lottery.domain.activity.model.vo.DrawOrderVO;
 import com.allanwang.lottery.domain.activity.model.vo.UserTakeActivityVO;
 import com.allanwang.lottery.domain.activity.repository.IUserTakeActivityRepository;
 import com.allanwang.lottery.domain.activity.service.partake.BaseActivityPartake;
-import com.allanwang.lottery.domain.support.ids.IIdGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
-import java.util.Map;
 
 /**
  * @description: activity partake impl
@@ -138,6 +136,11 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
         }
 
     }
+    @Override
+    public void updateInvoiceMqState(String uId, Long orderId, Integer mqState) {
+        userTakeActivityRepository.updateInvoiceMqState(uId, orderId, mqState);
+    }
+
 
 
 }

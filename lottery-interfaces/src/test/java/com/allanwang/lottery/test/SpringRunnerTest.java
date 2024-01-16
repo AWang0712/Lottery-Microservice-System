@@ -63,7 +63,7 @@ public class SpringRunnerTest {
 
         // encapsulate distribution parameters，orderId：2109313442431 is simulated ID，needs to be generated when the user participates in an award claim
         DrawAwardVO drawAwardInfo = drawResult.getDrawAwardInfo();
-        GoodsReq goodsReq = new GoodsReq(drawResult.getuId(), "2109313442431", drawAwardInfo.getAwardId(), drawAwardInfo.getAwardName(), drawAwardInfo.getAwardContent());
+        GoodsReq goodsReq = new GoodsReq(drawResult.getuId(), 2109313442431L, drawAwardInfo.getAwardId(), drawAwardInfo.getAwardName(), drawAwardInfo.getAwardContent());
 
         // based on awardType get the corresponding award distribution service from the lottery factory
         IDistributionGoods distributionGoodsService = distributionGoodsFactory.getDistributionGoodsService(drawAwardInfo.getAwardType());

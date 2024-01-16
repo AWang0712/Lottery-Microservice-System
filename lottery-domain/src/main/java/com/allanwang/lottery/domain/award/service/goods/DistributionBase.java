@@ -16,9 +16,8 @@ public class DistributionBase {
     @Resource
     private IOrderRepository awardRepository;
 
-    protected void updateUserAwardState(String uId, String orderId, String awardId, Integer awardState, String awardStateInfo) {
-        // TODO Add updates to the award status in the user's personal lottery record table in the repository at a later stage.
-        logger.info("TODO Add updates to the award status in the user's personal lottery record table in the repository at a later stage. uId：{}", uId);
+    protected void updateUserAwardState(String uId, Long orderId, String awardId, Integer grantState) {
+        awardRepository.updateUserAwardState(uId, orderId, awardId, grantState);
     }
 
 }

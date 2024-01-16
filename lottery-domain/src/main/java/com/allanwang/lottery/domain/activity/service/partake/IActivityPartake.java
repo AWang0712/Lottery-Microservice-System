@@ -21,4 +21,13 @@ public interface IActivityPartake {
      */
     Result recordDrawOrder(DrawOrderVO drawOrder);
 
+    /**
+     * update invoice mq state
+     *  @param uId
+     * @param orderId
+     * @param mqState
+     */
+    void updateInvoiceMqState(String uId, Long orderId, Integer mqState);
+
+
 }

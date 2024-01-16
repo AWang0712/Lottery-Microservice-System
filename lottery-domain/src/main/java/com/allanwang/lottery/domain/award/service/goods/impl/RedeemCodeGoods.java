@@ -20,7 +20,7 @@ public class RedeemCodeGoods extends DistributionBase implements IDistributionGo
         logger.info("simulate call redeem code uId：{} awardContent：{}", req.getuId(), req.getAwardContent());
 
         // update award state
-        super.updateUserAwardState(req.getuId(), req.getOrderId(), req.getAwardId(), Constants.AwardState.SUCCESS.getCode(), Constants.AwardState.SUCCESS.getInfo());
+        super.updateUserAwardState(req.getuId(), req.getOrderId(), req.getAwardId(), Constants.GrantState.COMPLETE.getCode());
 
         return new DistributionRes(req.getuId(), Constants.AwardState.SUCCESS.getCode(), Constants.AwardState.SUCCESS.getInfo());
     }

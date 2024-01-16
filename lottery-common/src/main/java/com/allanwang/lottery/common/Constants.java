@@ -345,7 +345,7 @@ public class Constants {
     /**
      * grant state 0: init, 1: complete, 2: fail
      */
-    public enum GrantState{
+    public enum GrantState {
 
         INIT(0, "init"),
         COMPLETE(1, "complete"),
@@ -355,6 +355,39 @@ public class Constants {
         private String info;
 
         GrantState(Integer code, String info) {
+            this.code = code;
+            this.info = info;
+        }
+
+        public Integer getCode() {
+            return code;
+        }
+
+        public void setCode(Integer code) {
+            this.code = code;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+    }
+
+    /**
+     * message queue state 0: init, 1: complete, 2: fail
+     */
+    public enum MQState {
+        INIT(0, "init"),
+        COMPLETE(1, "success"),
+        FAIL(2, "failed");
+
+        private Integer code;
+        private String info;
+
+        MQState(Integer code, String info) {
             this.code = code;
             this.info = info;
         }
