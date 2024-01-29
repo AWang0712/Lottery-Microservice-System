@@ -4,7 +4,7 @@ import com.allanwang.lottery.domain.activity.model.req.PartakeReq;
 import com.allanwang.lottery.domain.activity.model.vo.AlterStateVO;
 import com.allanwang.lottery.infrastructure.po.Activity;
 import org.apache.ibatis.annotations.Mapper;
-
+import java.util.List;
 import java.util.Map;
 
 @Mapper
@@ -38,6 +38,14 @@ public interface IActivityDao {
      * @return
      */
     int subtractionActivityStock(Long activityId);
+
+    /**
+     * scan to do activity list
+     *
+     * @param id ID
+     * @return activity list to do
+     */
+    List<Activity> scanToDoActivityList(Long id);
 
 
 }

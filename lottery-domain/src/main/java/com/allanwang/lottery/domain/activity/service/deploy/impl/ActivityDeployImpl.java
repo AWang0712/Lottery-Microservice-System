@@ -60,5 +60,10 @@ public class ActivityDeployImpl implements IActivityDeploy {
         // TODO: Subsequent additions of non-core functions
     }
 
+    @Override
+    public List<ActivityVO> scanToDoActivityList(Long id) {
+        return activityRepository.scanToDoActivityList(id);
+    }
+
 }
 

@@ -40,6 +40,24 @@ spring:
       ack-mode: manual_immediate
       missing-topics-fatal: false
 
+# xxl-job
+# https://github.com/xuxueli/xxl-job/
+# http://localhost:7397/xxl-job-admin
+# username: admin
+# password:
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:7397/xxl-job-admin
+    executor:
+      address: http://127.0.0.1:9999/
+      appname: lottery-job
+      ip: 127.0.0.1
+      port: 9999
+      logpath: D:\data\applogs\xxl-job\xxl-job-admin.log
+      logretentiondays: 30
+    accessToken:
+
 
 # multi-db-router configuration
 # mysql 5.x driver-class-name: com.mysql.jdbc.Driver    mysql-connector-java 5.1.34

@@ -1,1 +1,0 @@
-package com.allanwang.lottery.application.worker;

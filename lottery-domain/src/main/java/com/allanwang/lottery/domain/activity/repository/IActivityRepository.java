@@ -62,4 +62,13 @@ public interface IActivityRepository {
      */
     int subtractionActivityStock(Long activityId);
 
+    /**
+     * scan activity list
+     *
+     * @param id ID
+     * @return activity list to be processed
+     */
+    List<ActivityVO> scanToDoActivityList(Long id);
+
+
 }

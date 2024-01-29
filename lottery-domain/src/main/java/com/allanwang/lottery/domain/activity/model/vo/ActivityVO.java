@@ -3,6 +3,11 @@ package com.allanwang.lottery.domain.activity.model.vo;
 import java.util.Date;
 public class ActivityVO {
     /**
+     * auto increment ID
+     */
+    private Long id;
+
+    /**
      * activity ID
      */
     private Long activityId;
@@ -52,6 +57,15 @@ public class ActivityVO {
      * creator
      */
     private String creator;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public Long getActivityId() {
         return activityId;
