@@ -2,6 +2,7 @@ package com.allanwang.lottery.infrastructure.repository;
 
 import com.allanwang.lottery.common.Constants;
 import com.allanwang.lottery.domain.activity.model.vo.DrawOrderVO;
+import com.allanwang.lottery.domain.activity.model.vo.InvoiceVO;
 import com.allanwang.lottery.domain.activity.model.vo.UserTakeActivityVO;
 import com.allanwang.lottery.domain.activity.repository.IUserTakeActivityRepository;
 import com.allanwang.lottery.infrastructure.dao.IUserStrategyExportDao;
@@ -14,7 +15,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @description: user take activity repository
@@ -131,4 +134,24 @@ public class UserTakeActivityRepository implements IUserTakeActivityRepository {
         userStrategyExport.setMqState(mqState);
         userStrategyExportDao.updateInvoiceMqState(userStrategyExport);
     }
+
+    @Override
+    public List<InvoiceVO> scanInvoiceMqState() {
+        // Query send MQ failure and timeout 30 minutes without sending MQ data
+        List<UserStrategyExport> userStrategyExportList = userStrategyExportDao.scanInvoiceMqState();
+        // Convert to VO
+        List<InvoiceVO> invoiceVOList = new ArrayList<>(userStrategyExportList.size());
+        for (UserStrategyExport userStrategyExport : userStrategyExportList) {
+            InvoiceVO invoiceVO = new InvoiceVO();
+            invoiceVO.setuId(userStrategyExport.getuId());
+            invoiceVO.setOrderId(userStrategyExport.getOrderId());
+            invoiceVO.setAwardId(userStrategyExport.getAwardId());
+            invoiceVO.setAwardType(userStrategyExport.getAwardType());
+            invoiceVO.setAwardName(userStrategyExport.getAwardName());
+            invoiceVO.setAwardContent(userStrategyExport.getAwardContent());
+            invoiceVOList.add(invoiceVO);
+        }
+        return invoiceVOList;
+    }
+
 }

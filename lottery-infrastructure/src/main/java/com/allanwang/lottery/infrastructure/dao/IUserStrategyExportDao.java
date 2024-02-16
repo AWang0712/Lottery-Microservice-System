@@ -4,6 +4,7 @@ import com.allanwang.middleware.db.router.annotation.DBRouter;
 import com.allanwang.middleware.db.router.annotation.DBRouterStrategy;
 import com.allanwang.lottery.infrastructure.po.UserStrategyExport;
 import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
 /**
  * @description: user_strategy_export dao
@@ -41,5 +42,11 @@ public interface IUserStrategyExportDao {
     @DBRouter
     void updateInvoiceMqState(UserStrategyExport userStrategyExport);
 
+    /**
+     * Scanning the MQ status of shipment orders, scanning out orders that have not been sent MQs for compensation
+     *
+     * @return List<UserStrategyExport>
+     */
+    List<UserStrategyExport> scanInvoiceMqState();
 
 }

@@ -6,6 +6,7 @@ import com.allanwang.lottery.common.Result;
 import com.allanwang.lottery.domain.activity.model.req.PartakeReq;
 import com.allanwang.lottery.domain.activity.model.vo.ActivityBillVO;
 import com.allanwang.lottery.domain.activity.model.vo.DrawOrderVO;
+import com.allanwang.lottery.domain.activity.model.vo.InvoiceVO;
 import com.allanwang.lottery.domain.activity.model.vo.UserTakeActivityVO;
 import com.allanwang.lottery.domain.activity.repository.IUserTakeActivityRepository;
 import com.allanwang.lottery.domain.activity.service.partake.BaseActivityPartake;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @description: activity partake impl
@@ -141,7 +143,19 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
         userTakeActivityRepository.updateInvoiceMqState(uId, orderId, mqState);
     }
 
+    @Override
+    public List<InvoiceVO> scanInvoiceMqState(int dbCount, int tbCount) {
+        try {
+            // set router
+            dbRouter.setDBKey(dbCount);
+            dbRouter.setTBKey(tbCount);
 
+            // query data
+            return userTakeActivityRepository.scanInvoiceMqState();
+        } finally {
+            dbRouter.clear();
+        }
+    }
 
 }
 
